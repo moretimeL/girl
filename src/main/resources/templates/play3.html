@@ -1,0 +1,1270 @@
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
+    【手术直播】湖南省肿瘤医院在线直播
+</title>
+    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
+    <meta name="x5-orientation" content="portrait" />
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script>
+        function load(){    //窗口方向
+            window.onorientationchange=function(event){
+                window.orientation=0;
+                event.stopPropagation();
+                event.cancelBubble = true;
+
+            };
+        };
+
+    </script>
+</head>
+<body onload="display(),load()">
+<style type="text/css">
+    @media screen and (orientation:portrait) { @-ms-viewport{ width: 640px } }
+    @media screen and (orientation:landscape) { @-ms-viewport{ height: 1008px } }
+    body{ margin: 0mm; font: 8mm/2em 微软雅黑; color: #333 }
+    body a{ color: #000; text-decoration: none }
+    ul,li {list-style:none;}
+    .fl{ float: left }
+    .fr{ float: right }
+    .red{ color:red }
+    .hide{ display: none }
+    .box{ width: 640px; margin: 0mm auto; }
+    .r1{ height:90px; background-color:#333;position:relative;  }
+    .r6{ height: 60px; }
+    .r6 font.fr{font: 7mm/40px 微软雅黑; line-height: 60px; padding: 0mm 1mm 0mm 0mm }
+    .r2{ height: 360px; background-color:#333;position:relative; }
+
+    .r5{ height: 40px; background-color: #333; color:#fff; font: 7mm/40px 微软雅黑; padding: 0mm 1cm }
+    .r3{ height: 90px; }
+    .r3 font.fr a{ font: 6mm/45px 微软雅黑; background-color: #f80; color: #333; padding: 0mm 6mm; border-radius: 3mm; float: right; margin: 6mm 0mm 0mm 3mm }
+    .r4 .tab{ text-align: center; height: 90px; background-color: #e9e9e9; }
+    .r4 .tab a{ border-bottom: 4px solid #ccc; float: left; width: 33%; height: 86px; line-height: 86px; color: #888 }
+    .r4 .tab a.act{ border-bottom-color: #f80; color: #333 }
+    .r4 .tab a:nth-of-type(2){ width: 34% }
+    .detail > p {display:block;margin:0; }
+    .detail{ margin: 0px; color: #333 }
+    .detail img{ max-width:100%;}
+    .detail pre, .detail .pre{ margin: 0mm; padding: 0mm 1cm 5mm; font: 7mm/2em 微软雅黑 }
+    .detail p.btn{ margin: 0mm; height: 70px; background-color: #e9e9e9; position: fixed; bottom: 0mm }
+    .detail p.btn{ width: 640px; left: 50%; margin-left: -320px; text-align: center; padding: 10px 0mm }
+    .detail p.btn a{ display: inline-block; background-color: #f80; color: #fff; font: 8mm/70px 微软雅黑; width: 360px; border-radius: 3mm }
+    .r4_1{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
+    .r4_1 .pl{ color: #f80; background: url(Imgs/Write.png) no-repeat 0% 50%; padding-left: 2.5pc }
+    .r4_1 .ds{ color: #f80; background: url(Imgs/dasha.png) no-repeat 0% 50%; padding-left: 2.5pc }
+    .r4_2{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
+    .r4_2 .pl{ color: #f80; background: url(Imgs/manc2.png) no-repeat 0% 50%; padding-left: 3pc }
+    .r4_2 .ds{ color: #f80; background: url(Imgs/manct.png) no-repeat 0% 50%; padding-left: 3pc }
+    .quickpay{color: #f80; padding-left: 1pc}
+
+
+    .r4 .rrr{ margin: 0mm; list-style: none; padding: 0mm 8mm }
+    .r4 .rrr li{ border-bottom: 1px solid #e9e9e9; padding: 8mm 0mm 5mm }
+    .r4 .rrr li .user{ height: 60px; font: 6mm/25px 微软雅黑; color: #888 }
+    .r4 .rrr li .user img{ float: left; border-radius: 30px; background-image: radial-gradient(#fff, #888); margin-right: 3mm }
+    .r4 .rrr li .user p{ margin: 0mm; font: 7mm/35px 微软雅黑; color: #333; height: 35px; overflow: hidden }
+    .r4 .rrr li p.say{ background-color: #f5f5f5; font: 7mm/1cm 微软雅黑; padding: 2mm 4mm; margin: 3mm 0mm 0mm 70px; border-radius: 2mm ;overflow:hidden; }
+    .r4 p.more{ text-align: center; color: #888;margin-bottom:90px; }
+
+
+    .post{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6); }
+    .post div{ width: 640px; background-color: #e9e9e9; position: fixed; bottom:0px; }
+    .post p.txt{ margin: 0mm; padding: 4mm }
+    .post textarea{ display: block; width: 100%; background-color: transparent; border: none; height: 100px; font: 7mm/1cm 微软雅黑; color: #333 }
+    .post div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+    .post div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
+    .post div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
+
+    .allpic{ width: 640px;  position: fixed; top: 0mm; height:1008px; margin:0 auto; z-index:200;}
+    .allpic img { width:100%; height:100%;}
+    .pwdsend {border-radius: 3mm; width: 400px; background-color: #e9e9e9; position: absolute; top: 500px; left: 50%; margin: -260px 0mm 0mm -200px; overflow: hidden;z-index:500; }
+    .pwdsend input{ display: block; width: 100%; background-color: transparent; border: none; height: 80px; font: 7mm/1cm 微软雅黑; color: #333;text-align:center }
+    .pwdsend p.btn{ margin: 0mm; background-color: #fff; height: 80px }
+    .pwdsend p.btn a{ float: left; width: 100%; text-align: center; line-height: 80px; border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
+
+    .dashang{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6);z-index:100;}
+    .dashang div{ width: 640px; background-color: #e9e9e9; position:fixed; bottom:0px; overflow: hidden }
+    .dashang input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333;padding-left:10px; }
+    .dashang div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+    .dashang div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
+    .dashang div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
+    .dashang div ul{list-style:none;margin:0;padding:0;}
+    .dashang div ul li{width:25%;float:left;}
+    .dashang div ul li img{height:60px;}
+    .sel{background-color:#ccc;}
+
+    .dspay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) ;z-index:1000;}
+    .dspay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
+    .dspay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
+    .dspay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+    .dspay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
+
+    .orderpay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) }
+    .orderpay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
+    .orderpay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
+    .orderpay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+    .orderpay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
+
+    .YaoYao{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px;z-index:1000;  }
+    .YYY{ border-radius: 3mm; width: 500px;background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden}
+    .yao{ margin:0px auto; width:400px; text-align:center; }
+    .process{ margin:50px auto; width:1px; height:20px; background-color:#eee; }
+    .info{ margin:50px auto; color:#fff; text-align:center;}
+    .redpack{ clear:both; margin:50px auto; width:504px; height:163px; background:url(Imgs/yaohongbao.png) no-repeat; }
+    .redinfo{ clear:both; color:#fff; margin-left:160px; line-height:40px; margin-top:20px;}
+
+    .pindao {width:620px;margin:0 auto;padding:0;}
+    .pindao ul {width:620px;margin:0 auto;padding:0;}
+    .pindao ul li{width:299px;margin-top:10px;float:left; }
+    .pindao ul li p{width:290px; margin:0 auto; }
+    .pindao ul li p a{width:290px;}
+    .ptitle{width:280px;height:20px;line-height:20px; overflow:hidden; font-size:20px;text-align:center;}
+    .pimg{width:290px;height:168px; }
+    .pindaomore{ text-align: center; color: #888; width:640px; height:90px; line-height:90px; }
+
+    .top3 { width: 640px;height: 180px;margin-top: 30px; margin-bottom: 10px;padding-bottom:10px; border-bottom:1px solid #ccc }
+    .top3 div {float: left;}
+    .top3-l1 {width: 270px;margin-left: 10px;height: 180px;}
+    .top3-l1 img{width: 270px; height: 180px;}
+    .top3-r1 {width: 320px;margin-left: 20px;height: 160px;}
+    .top3-r1-1 { height: 40px;width: 320px;line-height: 40px;font-weight:600;overflow: hidden; font-size:30px;margin-top:10px;}
+    .top3-r1-2 {height: 40px;line-height: 40px;color: #ff6a00;font-size:30px;overflow: hidden;margin-top:5px; }
+    .top3-r1-3 {height: 40px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:25px;margin-top:10px;}
+    .lj {margin-left: 10px; padding: 2px 10px;background-color: #ff6a00; color: white;}
+    .lj a {color: wheat;}
+    .top3-r1-4{height: 30px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:20px;margin-top:5px;overflow:hidden}
+    .fc-box{height: 40px;line-height: 40px;color: #888;padding: 5mm 5mm;border-bottom: 1px solid #e9e9e9;}
+    .fc{font-size:30px;color:#f80;}
+    .input{height:80px;width:640px;margin:0 auto;position:fixed;bottom:0;background:#f5f5f7;}
+    .eer{margin:0;width:80%;display:inline-block;margin-left:10px;border:1px solid #ccc;border-radius:20px;margin-top:8px;background:#fff;}
+    .eer input{height:58px;width:90%;border:0;outline:none;padding:0;font-size:25px;margin-left:10px;margin-top:-2px;}
+    .eer img{vertical-align: middle;margin-left:8px;}
+    .img-box img{margin-top:14px;}
+    .img-box{width:15%;text-align:center;margin:0;position:absolute;right:2.5%;top:0;height:80px;}
+
+    .scoY{overflow-y: scroll}
+
+    .aaaa{
+        margin-bottom: 90px;
+    }
+    video::-webkit-media-controls-enclosure {
+        display: none !important;
+    }
+    #controls{
+        width: 100%;
+        height: 36px;
+        padding-top: 3px;
+        line-height: 36px;
+    }
+    .controls{
+        width:55%;
+        /*display: block;*/
+        height: 10px;
+        background: #ccc;
+        margin: 10px auto;
+        position: relative;
+        left: 3%;
+        right: 5%;
+        float: left;
+    }
+    .controls b{
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 0;
+        height: 100%;
+        background: blue;
+    }
+    .controls i {
+        width: 30px;
+        height: 30px;
+        border-radius: 50%;
+        background: #ddd;
+        position: absolute;
+        top: -10px;
+    }
+    #controls span{
+        text-align: center;
+        /*display: none;*/
+        font-size: 18px;
+        height: 100%;
+    }
+    #controls em{
+        width: 15%;
+        height: 100%;
+        line-height: 36px;
+        /*margin-right: 20px;*/
+    }
+
+    .hide{
+        display:none;
+    }
+    .timedjs,#overdjs{top:90px!important;}
+</style>
+<div style="width: 640px; margin: 0mm auto; position:relative;">
+    <div class="allpic">
+        <img src="/images/256.jpg" />
+    </div>
+    <div class="box">
+        <div class="YaoYao hide">
+
+        </div>
+        <div class="r1 hide">
+          <!--  <a href="">
+                <img src="/images/logo22725.jpg" />
+            </a>-->
+        </div>
+        <div style="overflow:hidden;">
+            <div class="r2" >
+                <div id="vone" style="position:absolute;"></div>
+
+            </div>
+        </div>
+        <div id="controls" >
+            <span id="current" style="width: 10%;display: none">0:00</span>  <span id="current_1" style="width: 10%;float: left">0:00</span>
+            <strong class="controls" ><b class="controls_b"></b><i class="controls_i"></i></strong>
+            <em class="full" style="font-size: 18px;float:right;">全屏播放</em>
+            <b style="clear: both"> </b>
+        </div>
+        <div id="Vcon">
+            <div id="danmu"  style="display:none;"></div>
+            <div id="fullscreen" onclick="testPlay()" style="width:60px;height:60px;z-index:199;top:300px;right:10px;position:absolute;color:#fff;font-size:20px;display:none;">全屏</div>
+            <div class="r5">
+                <!--<marquee>
+               滚动字幕
+                </marquee>-->
+            </div>
+            <div class="detail mar">
+                <img src="http://www.hnzlyy.com/templets/default/images/logo.jpg" alt=""  style="white-space:normal;"/>
+            </div>
+            <div class="r4">
+                <div class="tab">
+                    <a href="javascript:;" class='act'>留言互动</a>
+                    <a href="javascript:;" >直播详情</a>
+                    <a href="javascript:;" >贴心官微</a>
+                </div>
+                <div class="page">
+                    <!-- 直播互动 -->
+                    <div class="item ">
+                        <div class="fc-box">
+                            <font class="fc" color="#f80">&nbsp;观看0人</font>
+                        </div>
+                        <div style="color:red;font-size:24px;padding-left:30px;background-color:#e9e9e9;border-radius:10px;width:85%;line-height:40px;margin-left:30px;margin-top:10px;" id="hy1">欢迎进入直播间</div>
+                        <div class="aaaa">
+                            <ul class="rrr">
+                                <li class="hide">
+                                    <div class="user">
+
+                                        <img width="60" height="60" />
+                                        <p>Name</p>Time<a href="javascript:void(0);" onclick="reply(this)" style="float:right;"><img style="border-radius:0;" src="img/pl.jpg" /><span style="display:none">123</span></a>
+
+                                    </div>
+                                    <p class="say">Says</p>
+                                </li>
+                            </ul>
+
+                            <p class="more">没有更多了</p>
+                            <div id="blo"></div>
+                        </div>
+                        <script type="text/javascript">
+                            function reply(lou)
+                            {
+                                var louceng=lou.parentNode.querySelector("p").innerHTML;
+                                document.querySelector(".eer input").value="回复"+louceng+"：";
+                                document.querySelector(".eer input").focus();
+
+                            }
+                        </script>
+                    </div>
+                    <!-- 活动详情 -->
+                    <div class="item hide">
+                        <div class="detail">
+                        <!--- 先显示广告吗？-->
+                            <img src="/images/head1.png" alt="" />
+
+                        </div>
+                    </div>
+                    <!-- 第三个 -->
+                    <div class="item hide">
+                        <div class="detail" style="margin:0 auto">
+                            <img src="/images/20180320171029.png" alt="" />
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+
+
+
+
+    <div class="dspay hide"> --><!--以下全是调整格式的作用-->
+
+    </div>
+    <div class="orderpay hide">
+
+    </div>
+    <div class="dashang hide">
+
+    </div>
+    <div class="pay_look" hidden style="
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    background: rgba(0,0,0,.5);
+">
+
+    </div>
+    <div class="input">
+        <p class="eer">
+            <input type="text" placeholder="录入你的评论" />
+        </p>
+        <div class="img-box">
+            <!--<img src="img/lala.png" class="love" />-->
+            <img src="/images/send.png" class="open" />
+        </div>
+    </div>
+</div>
+
+
+<script type="text/javascript" src="vplayer/ckplayer.js" charset="utf-8"></script>
+<script type="text/javascript">
+
+    function pinit(url) {
+        var flashvars = {
+            f: 'http://zb.shixiutv.com/m3u8.swf',
+            a: url,
+            i: 'ProPic/22725.jpg?3',
+            p: 1,
+            c: 0,
+            s: 4,
+            lv: 1,
+            my_url: encodeURIComponent(window.location.href),
+            my_title: encodeURIComponent(document.title),
+            loaded: 'loadedHandler',
+            b: 0
+        };
+        var params = { bgcolor: '#FFF', allowFullScreen: true, allowScriptAccess: 'always',wmode:"transparent" };
+        var video = [url];
+        CKobject.embed('http://zb.shixiutv.com/vplayer/ckplayer.swf', 'vone', 'ckplayer_a1', '640', '360', false, flashvars, video, params);
+    }
+    pinit('http://gsh.shixiu.tv/hls/22725/ipir6vf/a/index.m3u8')
+</script>
+
+
+<script type="text/javascript">
+    //去除后台上传的图片距离白边
+    var detailImgs = document.querySelectorAll(".detail img");
+    for(var i=0;i<detailImgs.length;i++){
+        detailImgs[i].style.margin = 0;
+        detailImgs[i].style.marginTop = 0;
+        detailImgs[i].style.marginBottom = 0;
+        detailImgs[i].style.marginLeft = 0;
+        detailImgs[i].style.marginRight = 0;
+        detailImgs[i].style.display = "block";
+    }
+
+    var tmpLi = document.querySelector(".r4 .item .rrr li.hide");
+    // 评论模板
+    var tmpRow = {
+
+        icon: tmpLi.querySelector(".user img"),
+
+        nick: tmpLi.querySelector(".user p").lastChild,
+        say: tmpLi.querySelector(".say").lastChild,
+        reply:tmpLi.querySelector(".user a span") && tmpLi.querySelector(".user a span").lastChild,
+        newRow: function (arr, isNew) {
+
+            this.icon.src = arr[1];
+            this.time.data = arr[3];
+
+            var tag_lou = arr[4].indexOf('楼：');
+            arr[4] = arr[4].substring(parseInt(tag_lou)+2);
+            this.nick.data = arr[2];
+            this.say.data = arr[4];    //arr[0] + "楼：" +
+            this.reply.data=arr[4].split('：')[0];
+            var newLi = tmpLi.cloneNode(true);
+            if (arr[5] == "1") {
+                newLi.querySelector(".say").classList.add("red");
+                newLi.querySelector(".say").innerHTML = arr[4];
+            }
+            newLi.classList.remove("hide");
+            newLi.dataset.ID = arr[0];
+            var ul = tmpLi.parentNode;
+            if (!isNew) return ul.appendChild(newLi);
+            ul.insertBefore(newLi, tmpLi.nextSibling);
+            this.cnt.data = ~~this.cnt.data + 1;
+            return newLi;
+        },
+        more: document.querySelector("p.more"),
+        cnt: document.querySelector(".fc")
+    };
+    tmpRow.time = tmpRow.nick.parentNode.nextSibling;
+    var fntUsers = document.querySelector(".fc").lastChild;
+
+    (function (act) {
+
+        var YaoYao = document.querySelector(".YaoYao");
+
+        YaoYao.style.height = innerHeight + "px";
+        var wx = {
+            OpenID: "110.53.163.41",
+            Nick: "长沙网友(110.53.163.*)",
+            Icon: "/Imgs/head0.jpg"
+        };
+
+//      var post = document.querySelector(".post");
+//      post.style.height = innerHeight + "px";
+        var dashang = document.querySelector(".dashang");
+        dashang.style.height = innerHeight + "px";
+
+        var dspay = document.querySelector(".dspay");
+        dspay.style.height = innerHeight + "px";
+
+        var orderpay = document.querySelector(".orderpay");
+        orderpay.style.height = innerHeight + "px";
+
+        var allpic = document.querySelector(".allpic");
+        allpic.style.height = innerHeight + "px";
+
+        var posting = false;
+        /* tab切换 */
+        var btn = document.querySelectorAll(".r4 .tab a");
+
+        var tab = document.querySelectorAll(".r4 .page .item");
+        var mact= "0";
+        for (var i = 0; i < btn.length; (function (x) {
+            btn[x].onclick = function (evt) {
+                evt.preventDefault();
+                if (x == mact) return;
+                btn[mact].classList.remove("act");
+                tab[mact].classList.add("hide");
+                btn[x].classList.add("act");
+                tab[x].classList.remove("hide");
+                mact = x;
+                if(x != 0){
+                    document.querySelector(".input").style.display="none";
+                }else{
+                    document.querySelector(".input").style.display="block";
+                }
+            }
+        })(i++));
+        /* 按钮事件 */
+        // 说两句
+//        document.querySelector(".r4_1 .pl").onclick = function (evt) {
+//            evt.preventDefault();
+//            post.classList.remove("hide");
+        //        };
+
+
+        //加密观看
+
+        allpic.onclick = function () {
+
+            allpic.classList.add("hide"); //隐藏当前层
+
+            document.getElementById("danmu").style.display="";//隐藏弹幕
+        };
+
+        var pwdsend = document.querySelector(".pwdsend a");
+        pwdsend.onclick = function (evt) {
+            evt.preventDefault();
+            var pwdtxt = document.querySelector(".pwdsend input");
+            var pwdvalue = pwdtxt.value;
+            if (!pwdvalue) return alert("请输入密码！");
+            var par = [
+                "act=JiaMi",
+                "OpenID=" + wx.OpenID,
+                "Nick=" + encodeURIComponent(wx.Nick),
+                "Icon=" + wx.Icon,
+                "Msg=" + encodeURIComponent(pwdvalue)
+            ].join("&");
+            Post(function (txt) {
+                if(/^\d{1,10}$/.test(txt))
+                {
+                    alert("密码错误！");
+                }
+                else
+                {
+                    //改变播放地址？
+
+                    pinit(txt);
+
+                    allpic.classList.add("hide");
+                    document.querySelector(".pwdsend").classList.add("hide");
+                    document.getElementById("danmu").style.display="";
+                }
+            }, par);
+        };
+
+        //取消购买支付yyclose
+        document.querySelector(".orderpay .btn .exit").onclick = function (evt) {
+            evt.preventDefault();
+            orderpay.classList.add("hide");
+        };
+        //确认购买支付
+        var payokooid=0;
+        var payokouid=0;
+        var isaddress=0;
+        document.querySelector(".orderpay .btn .enter").onclick = function (evt) {
+            evt.preventDefault();
+            var uphone=document.querySelector(".orderpay .txt .txtphone").value;
+            var getname="";
+            var getaddress="";
+            var patrn=/^(1)\d{10}$/;
+            if (!patrn.exec(uphone))
+            {
+                alert("请输入正确的手机号");
+                return;
+            }
+            if(isaddress=="1")
+            {
+                getname=document.querySelector(".orderpay .txt .txtname").value;
+                getaddress=document.querySelector(".orderpay .txt .txtadr").value;
+                if(getname.replace(" ","").length==0)
+                {
+                    alert("请输入姓名");
+                    return;
+                }
+                if(getaddress.length==0)
+                {
+                    alert("请输入地址");
+                    return;
+                }
+            }
+            if(payokooid>0 && payokouid>0)
+            {
+                var par = [
+                    "act=PayNewOrder",
+                    "oID=" + payokooid,
+                    "uID=" + payokouid,
+                    "uPhone=" + uphone,
+                    "getname=" + getname,
+                    "getaddress=" + getaddress,
+                    "OpenID=" + wx.OpenID
+                ].join("&");
+                Post(function (txt) {
+                    orderpay.classList.add("hide");
+                    alert(txt);
+                }, par);
+            }
+            else
+            {
+                // window.location = "XTrolley.aspx?body=oid-"+payokooid+"-pid-22725";
+                var uid="0";
+                sendmoney("payorder",payokooid,uid,uphone,getname,getaddress);
+                orderpay.classList.add("hide");
+
+            }
+        };
+        //立即购买orderbtn
+        var odbtn = document.querySelectorAll(".orderbtn");
+        for (var i = 0; i < odbtn.length; (function (y) {
+            odbtn[y].onclick = function (evt) {
+                evt.preventDefault();
+                var par = [
+                    "act=NewOrder",
+                    "xpid="+odbtn[y].title,
+                    "openid="+wx.OpenID
+                ].join("&");
+                Post(function(txt){
+                    orderpay.classList.remove("hide");
+                    var arr = txt.split("\b");
+                    if (arr.length < 2) return alert(txt);
+                    payokooid=arr[0];
+                    payokouid=arr[1];
+                    document.querySelector(".orderpay .txt .txtphone").value=arr[2];
+                    document.querySelector(".orderpay .txt .txtinfo").value=arr[3];
+                    isaddress=arr[4];
+                    if(isaddress=="1"){
+                        document.querySelector(".orderpay .txt .txtname").style.display="block";
+                        document.querySelector(".orderpay .txt .txtadr").style.display="block";
+                        document.querySelector(".orderpay .txt .txtname").value=arr[5];
+                        document.querySelector(".orderpay .txt .txtadr").value=arr[6];
+                    }
+                    else{
+                        document.querySelector(".orderpay .txt .txtname").style.display="none";
+                        document.querySelector(".orderpay .txt .txtadr").style.display="none";
+                    }
+
+                },par);
+            }
+        })(i++));
+
+        //取消打赏支付
+        document.querySelector(".dspay .btn .exit").onclick = function (evt) {
+            evt.preventDefault();
+            dspay.classList.add("hide");
+        };
+        //确认打赏支付
+        var payokuid=0;
+        var payokrid=0;
+        document.querySelector(".dspay .btn .enter").onclick = function (evt) {
+            evt.preventDefault();
+            if(payokrid>0 && payokuid>0)
+            {
+                var par = [
+                    "act=PayDaShang",
+                    "rID=" + payokrid,
+                    "uID=" + payokuid,
+                    "OpenID=" + wx.OpenID
+                ].join("&");
+                Post(function (txt) {
+                    dspay.classList.add("hide");
+                    alert(txt);
+                }, par);
+            }
+            else
+            {
+                //window.location = "wxpay/DaShang.aspx?body=" + payokrid;
+                sendmoney("dashang",payokrid,"","","","");
+                dspay.classList.add("hide");
+            }
+        };
+
+        // 打赏
+        document.querySelector(".love").onclick = function (evt) {
+            evt.preventDefault();
+            document.querySelector("#danum").placeholder="输入打赏数量";
+            dashang.classList.remove("hide");
+        };
+        var dsForm = dashang.querySelectorAll("p.btn a");
+        dsForm[0].onclick = function (evt) {
+            // 取消打赏
+            evt.preventDefault();
+            dashang.classList.add("hide");
+        };
+        dsForm[1].onclick = function (evt) {
+            // 提交打赏
+            evt.preventDefault();
+            var dpt = document.querySelector(".dashang #danum");
+            if (!/^[1-9]\d*$/.test(dpt.value)) { dpt.value=1 };
+
+            var dtype = document.querySelector(".dashang #dtype");
+            var moneyf = 1;
+            if (dtype.value == "1")
+                moneyf = parseInt(dpt.value) * parseFloat(document.querySelector("#djval1").value );
+            if(dtype.value=="2")
+                moneyf = parseInt(dpt.value) * parseFloat(document.querySelector("#djval2").value );
+            if (dtype.value == "3")
+                moneyf = parseInt(dpt.value) * parseFloat(document.querySelector("#djval3").value );
+            if (dtype.value == "4")
+                moneyf = parseInt(dpt.value) * parseFloat(document.querySelector("#djval4").value );
+
+            var minm = 1;
+            if (!moneyf) return alert("请输入打赏数量");
+            if (!/^\d{1,10}(\.\d{1,2})?$/.test(moneyf)) { return alert('金额必须为数字格式') };
+            //if(moneyf<minm) {return alert("必须大于最低金额")};
+            var par = [
+                "act=NewDaShang",
+                "dtype=" + dtype.value,
+                "dnum=" + dpt.value,
+                "OpenID=" + wx.OpenID,
+                "Nick=" + encodeURIComponent(wx.Nick),
+                "Icon=" + wx.Icon,
+                "Msg=" + encodeURIComponent(moneyf)
+            ].join("&");
+            Post(function (txt) {
+                dashang.classList.add("hide");
+                dspay.classList.remove("hide");
+                var arr = txt.split("\b");
+                if (arr.length < 2) return alert(txt);
+                payokrid=arr[0];
+                payokuid=arr[1];
+                document.querySelector(".dspay .txt .txtinfo").value=arr[2];
+            }, par);
+        };
+
+//      // 评论按钮操作
+        var btnForm = document.querySelector(".open");
+        btnForm.onclick = function (evt) {
+            // 提交评论
+            evt.preventDefault();
+            if (!wx.OpenID) return alert("请使用微信进入后再发表评论。");
+            if (posting) return alert("网络正忙，您可以尝试重新提交。");
+            var ipt = document.querySelector(".eer input");
+            var msg = ipt.value;
+            if (!msg) return alert("请输入评论内容");
+            if(msg.length>100) return alert("输入内容需在100字以内");
+            var par = [
+                "act=Post",
+                "OpenID=" + wx.OpenID,
+                "Nick=" + encodeURIComponent(wx.Nick),
+                "Icon=" + wx.Icon,
+                "Msg=" + encodeURIComponent(msg)
+            ].join("&");
+            Post(function (txt) {
+                ipt.value = "";
+                var arr = txt.split("\b");
+                if (arr.length < 2) return alert(arr[0]);
+                //tmpRow.newRow([~~arr[1], wx.Icon, wx.Nick, new Date().toLocaleTimeString(), "您已评论成功！", "0"], true);
+                //alert("您已评论成功！");
+                tmpRow.firstId = ~~arr[1];
+            }, par);
+            var img = document.querySelector(".open");
+            var box = document.querySelector(".img-box");
+            var eer = document.querySelector(".eer");
+            img.style.display = "none";
+            box.style.width = "15%";
+            eer.style.width = "80%";
+        };
+        // 更多评论
+        tmpRow.more.onclick = function (evt) {
+            if (!tmpRow.hasRow) return alert("没有更多评论了");
+            loadChat(tmpRow.lastId);
+        };
+
+        /*加载频道往期回顾信息*/
+        var pindaomore=document.querySelector(".pindaomore");
+        pindaomore.onclick=function(evt)
+        {
+            var pageindex=document.getElementById("pageindex").value;
+            var par = [
+                "act=GetPindao",
+                "pageindex="+pageindex
+            ].join("&");
+            Post(function (txt) {
+                var strarray=new Array();
+                strarray=txt.split('*');
+                if(strarray.length==2){
+                    document.getElementById("pindao").innerHTML=document.getElementById("pindao").innerHTML+strarray[0];
+                    document.getElementById("pageindex").value=strarray[1];
+                }
+                else
+                {
+                    document.getElementById("pindao").innerHTML=document.getElementById("pindao").innerHTML+strarray[0];
+                    document.getElementById("pageindex").value="0";
+                    pindaomore.innerHTML="没有更多了";
+                }
+            }, par);
+        };
+        /* 加载评论 */
+
+        var marq = document.querySelector("marquee");
+        loadChat(0);
+        //// 10秒获取一次最新评论
+        //setInterval(function () {
+        //    loadChat(tmpRow.firstId, true);
+        //}, 10000);
+        function loadChat(id, isNew) {
+            var newStr = isNew ? "&New=1" : "";
+            Post(function (txt) {
+                var data = txt.split("\f");
+                var hd = data.shift().split("\b");  //取出第一个并从数组中删除
+                if (hd.length == 1) return;
+                console.log(fntUsers.parentNode,hd[2])
+                //                fntUsers.data = fntUsers.data.replace(/\d+/, hd[2]);    //替换新的在线人数
+                fntUsers.data ="在线人数"+hd[2];
+                marq.textContent = hd[3];
+                if(hd[4]>0)   //摇一摇红包关联
+                {
+                    YaoFlag=true;
+                    YaoCode=hd[5];
+                }
+                if (isNew && data.length) {
+                    tmpRow.firstId = hd[1];     //从哪一条ID取起？
+                    data.reverse(); //翻转字符串元素，逆序排列
+                }
+                for (var i = 0; i < data.length; i++) tmpRow.newRow(data[i].split("\b"), isNew);
+                if (isNew) return;
+                // 不存在firstId时初始化firstId
+                if (!tmpRow.firstId && data.length) tmpRow.firstId = data[0].split("\b")[0];
+                tmpRow.hasRow = ~~hd[0];
+                tmpRow.lastId = hd[1];
+                tmpRow.more.innerHTML = tmpRow.hasRow ? "点击获取更多评论" : "没有更多评论了";
+            }, "act=List&openid="+wx.OpenID+"&nick="+wx.Nick+"&ID=" + id + newStr);
+        }
+
+
+        var YaoFlag=false;
+        var YaoCode="";
+        //取消摇红包
+        document.querySelector(".yyclose").onclick = function (evt) {
+            evt.preventDefault();
+
+            YaoYao.classList.add("hide");
+            result.classList.remove("hide");
+            redpack.classList.add("hide");
+            redinfo.innerHTML = "";
+            red=0;
+            count=0;
+        };
+        //摇一摇红包，仅支持手机微信
+
+
+
+    })(0);
+
+
+
+    // Ajax提交数据
+    function Post(func, str) {
+     var xhr = new XMLHttpRequest;
+       xhr.open("POST", "Data/Ajax.aspx?pid=22725", true);
+      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+       xhr.onload = function () {
+          posting = false;
+          func(xhr.responseText);
+       };
+       xhr.onerror = function () { posting = false; };
+        xhr.send(str);
+    }
+
+
+
+    // Ajax提交数据
+    function QQPost(func, str) {
+        var xhr = new XMLHttpRequest;
+        xhr.open("POST", "/Data/QQHandler.aspx?pid=22725", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            posting = false;
+            func(xhr.responseText);
+        };
+        xhr.onerror = function () { posting = false; };
+        xhr.send(str);
+    }
+    function seldaoju(id)
+    {
+        document.getElementById("dtype").value=id;
+        for(var i=1;i<5;i++)
+        {
+            if(id==i)
+                document.getElementById("daoju"+i).style.backgroundColor="#ccc";
+            else
+                document.getElementById("daoju"+i).style.backgroundColor="#e9e9e9";
+        }
+    }
+    var ShiXiu = ShiXiu || {};
+    ShiXiu.Weixin = ShiXiu.Weixin || {};
+    //统一tools方法
+    ShiXiu.Tools = ShiXiu.Tools || {};
+    /**
+     * ajax请求
+     * @param {} method,url,par
+     * @returns function (data){
+    }
+     */
+    ShiXiu.Tools.ajax = function (par) {
+        //TODO参数验证
+
+
+        var xhr = new XMLHttpRequest;
+        xhr.open(par.method, par.url, false);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            par.success(xhr.responseText);
+        };
+        xhr.onerror = function () {
+
+        };
+
+        xhr.send(par.par);
+    }
+    /**
+     * 微信支付api 用法 ShiXiu.weixin.wxpay(参数);
+     * @param {}  url,par,success()...
+     * @returns {}
+     */
+    ShiXiu.Weixin.wxpay = function (par) {
+        ShiXiu.Tools.ajax({
+            method: "POST",
+            url: par.url, //预支付下单url
+            par: par.par,
+            success: function (txt) {
+
+                console.log(txt);
+                //获得预支付参数
+                var obj = JSON.parse(txt);
+                par.obj = obj;
+                //发起js微信支付请求
+                WeixinJSBridge.invoke('getBrandWCPayRequest', {
+                    "appId": obj.appId, //公众号名称，由商户传入
+                    "timeStamp": obj.timeStamp, //时间戳
+                    "nonceStr": obj.nonceStr, //随机串
+                    "package": obj.paypackage, //扩展包
+                    "signType": "MD5", //微信签名方式:1.sha1
+                    "paySign": obj.paySign //微信签名
+                }, function (res) {
+                    if (res.err_msg == "get_brand_wcpay_request:ok") {
+                        alert("微信支付成功!");
+                        window.location.reload();
+                    } else if (res.err_msg == "get_brand_wcpay_request:cancel") {
+                        alert("用户取消支付!");
+                    } else {
+                        alert(res.err_msg);
+                    }
+                });
+            }
+        });
+    };
+
+    var OrderID;
+    var orderid_flag;
+    function showds(){
+
+
+        document.querySelectorAll('.pay_look')[0].style.display="block";
+    }
+    document.querySelector('.gmmp').addEventListener('click',function(){
+        var par1 = "act=payProduct";
+
+        ShiXiu.Tools.ajax({
+            url: "/Data/QQHandler.ashx?pid=" + "22725",
+            method: "POST",
+            par: par1,
+            success: function(txt) {
+                if(txt=="-1")
+                {
+                    alert("没有相关门票信息");
+                    return;
+                }
+                else{
+                    var arr = txt.split("\b");
+                    OrderID=arr[0];
+                    orderid_flag = arr[1];
+                }
+            }
+        });
+
+        if (orderid_flag == 1) {
+            //余额支付
+            if (confirm("将优先使用余额支付")) {
+                var paypar = ["act=payProductByBalance", "orderID=" +OrderID].join("&");
+                //余额支付
+                ShiXiu.Tools.ajax({
+                    url: "/Data/QQHandler.ashx?pid=" + "22725",
+                    method: "POST",
+                    par: paypar,
+                    success: function(txt) {
+                        if (txt == "-1") {
+                            alert("支付失败,余额不足");
+                        } else {
+                            alert("支付成功");
+                            //刷新页面
+                            //v = setInterval("IsPayProSuccess()", 1000);
+                            window.location.reload();
+                        }
+
+                    }
+                });
+            }
+        } else {
+            //去支付
+            var par = ["act=weixinpay","type=payProduct", "OrderID="+OrderID].join("&");
+
+            ///微信支付
+            ShiXiu.Weixin.wxpay({
+                par:par,
+                url: "/Data/weixinPay.ashx?pid=" +  "22725",
+                success:function() {
+                    alert("支付成功");
+                    //刷新页面
+                    //v = setInterval("IsPayProSuccess()", 1000);
+                    window.location.reload();
+
+                },
+                cnacel: function() {
+                },
+                error:function(err) {
+                }
+            });
+        }
+
+    })
+    //防止输入框乱跑
+    //function noway(){
+    //    var height1 = document.querySelector("body").scrollHeight;
+    //    console.log(height1);
+    //    var box = document.querySelector(".box");
+    //    box.style.height = (height1 - 80) +"px";
+    //}
+    //noway();
+    //输入框内容发生变化时发送按钮显示出来
+    function thisLook(){
+        var img = document.querySelector(".open");
+        var box = document.querySelector(".img-box");
+        var eer = document.querySelector(".eer");
+        if(!this.value){
+            eer.style.width = "80%";
+            box.style.width = "15%";
+            img.style.display = "none";
+        }else{
+            eer.style.width = "70%";
+            box.style.width = "25%";
+            img.style.display = "inline";
+        }
+
+    }
+    var ipt = document.querySelector(".eer");
+    ipt.querySelector("input").oninput = thisLook;
+</script>
+<script type="text/javascript">
+    //验证浏览器是否支持WebSocket协议
+    if (!window.WebSocket) {
+        alert("WebSocket not supported by this browser!");
+    }
+    function display() {
+        alert('1');
+
+        var wsImpl = window.WebSocket || window.MozWebSocket;
+       // alert('2');
+        // create a new websocket and connect
+        //var wsAddress = "ws://123.56.188.210:8778/" + 22725 + "/" + "110.53.163.41" + "/" + "长沙网友(110.53.163.*)";
+
+        var userJsonModel = {
+            id: "110.53.163.41",
+            name:"长沙网友(110.53.163.*)",
+            icon: "/Imgs/head0.jpg",
+            count:'0'
+        }
+
+        var appid = 'wx591d0d4203841689';  //订制潘
+        var appsecret ='40842ad4821bf22990e864fc462363dd';   //订制潘
+        var receiveurl=encodeURIComponent('http://d7egfs.natappfree.cc/getCode');
+       // alert('receiveurl'+receiveurl);
+        var paypar = ["appid="+appid,"redirect_uri="+receiveurl,"response_type=code","scope=snsapi_userinfo","state=STATE#wechat_redirect"].join("&");
+        var urlstr = 'https://open.weixin.qq.com/connect/oauth2/authorize?';
+        //https://open.weixin.qq.com/connect/oauth2/authorize?appid=APPID&redirect_uri=REDIRECT_URI&response_type=code&scope=snsapi_userinfo&state=STATE#wechat_redirect
+        urlstr += paypar;
+
+        window.location.href=urlstr; 跳转页面
+        //alert('4');
+
+
+        //var wsAddress = shiXiuDataConfig.WebSocketUrl + "/" + 22725 + "/" + encodeURIComponent(JSON.stringify(userJsonModel));
+
+        //var wsAddress = urlstr;
+        ws = new WebSocket(wsAddress);
+        //alert(ws.readyState);
+
+        // when data is comming from the server, this metod is called
+        ws.onmessage = function (evt) {
+            alert(evt);
+            //console.log(evt.data);
+
+
+            var dataMsg =JSON.parse(evt.data);
+            var nType = dataMsg.nType;
+            var Msg = dataMsg.msg;
+            if (nType == "0") {
+                document.getElementById("hy1").innerText = "欢迎"+dataMsg.nickName + "进入直播间";
+                console.log(dataMsg)
+                fntUsers.data = fntUsers.data.replace(/\d+/, Msg);
+            }
+
+            if(nType=="4"){
+                //评论
+                var msgrow=Msg.split("\b");
+                if(msgrow.length=="1"){
+                    var msgrow2 = Msg.split("\f");
+                    if(msgrow2.length == "1")
+                        document.getElementById("hy1").innerText=Msg.split(";")[0];
+                    else{
+                        //alert(msgrow2[0]);
+                        //alert(msgrow2[1]);
+
+                        document.querySelector(".video").src = msgrow2[1];
+                        //document.getElementById("vone").load();
+
+                        var videos = document.getElementsByClassName("video");
+                        for(var i =0;i<videos.length;i++){
+                            videos[i].play();
+                        }
+                    }
+                }else{
+                    tmpRow.newRow(msgrow, true);
+                    //弹幕
+
+                }
+            }
+        };
+
+        // when the connection is established, this method is called
+        ws.onopen = function () {
+            console.log("websocket connect success");
+            // register();
+            //send2("22725");
+            //send3("22725");
+        };
+
+        // when the connection is closed, this method is called
+        ws.onclose = function () {
+            console.log("websocket closed");
+            // display();
+        }
+    }
+
+
+
+</script>
+
+<script>
+    // Ajax提交数据
+    function PostTongJi(func, str) {
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET", "/Data/TongJi.ashx?pid=ipi22725", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            posting = false;
+            func(xhr.responseText);
+        };
+        xhr.onerror = function () { posting = false; };
+        xhr.send(str);
+    }
+    PostTongJi(function(){},"");
+</script>
+<script type="text/javascript">
+    function key(a,b,c){
+        a.style.display = "none";
+        b.style.display = "none";
+        var a = window.screen.width * 9 / 16;
+        c.style.height = "534px";
+        c.className = "aaaa scoY";
+    }
+    window.onresize = function(){
+        if (document.querySelector("#vone").paused == false) {
+            document.querySelector("#blo").style.height = "150px";
+            key(document.querySelector(".r1"),document.querySelector(".mar"),document.querySelector(".aaaa"));
+            document.querySelector("#vone").style.width = window.innerWidth + "px";
+            document.querySelector("#vone").style.height = window.innerHeight + "px";
+            document.querySelector("#vone").style["object-position"]= "0px 0px"
+            document.querySelector(".timedjs").style.top = "0px";
+            document.querySelector("#overdjs").style.top = "0px";
+
+            // clearInterval(id);
+            document.querySelectorAll(".item")[1].style.height="700px";
+            document.querySelectorAll(".item")[1].style.overflowY="scroll";
+            document.querySelectorAll(".item")[2].style.height="700px";
+            document.querySelectorAll(".item")[2].style.overflowY="scroll";
+            document.querySelector("#fullscreen").style.display="block";
+        }else{
+            document.querySelector("#blo").style.height = "150px";
+            document.querySelector(".r1").style.display = "block";
+            document.querySelector(".mar").style.display = "block";
+            document.querySelector(".aaaa").style.height = "auto";
+            document.querySelector(".aaaa").className = "aaaa";
+            //document.querySelector(".timedjs").style.top= "90px";
+            document.querySelector("#overdjs").style.top= "90px";
+            //document.querySelector(".more").style.marginTop = "1em";
+            document.querySelectorAll(".item")[1].style.height="auto";
+            document.querySelectorAll(".item")[1].style.overflowY="none";
+            document.querySelectorAll(".item")[2].style.height="auto";
+            document.querySelectorAll(".item")[2].style.overflowY="none";
+            document.querySelector("#fullscreen").style.display="none";
+        }
+    }
+
+
+    function testPlay(){
+        //W3C
+        if (vone.requestFullscreen) {
+            vone.requestFullscreen();
+        }
+        //FireFox
+        else if (vone.mozRequestFullScreen) {
+            vone.mozRequestFullScreen();
+        }
+        //Chrome等
+        else if (vone.webkitRequestFullScreen) {
+            vone.webkitRequestFullScreen();
+        }
+        //IE11
+        else if (test_video.msRequestFullscreen) {
+            vone.msRequestFullscreen();
+        }
+    }
+</script>
+
+
+<script>
+
+    (function(){
+
+        var u = navigator.userAgent;
+        var isAndroid = u.indexOf('Android') > -1 || u.indexOf('Adr') > -1; //android终端
+        var isiOS = !!u.match(/\(i[^;]+;( U;)? CPU.+Mac OS X/); //ios终端
+        if(isAndroid){
+            document.querySelector('#controls').classList.remove('hide');
+        }
+
+        document.querySelector("#vone").addEventListener("timeupdate",function(event){
+            var dur=document.querySelector("#duration").innerHTML;
+            if(dur.split(":")[1].slice(1)=="NaN"){
+                document.querySelector("#duration").style.display="none";
+            };
+
+            var me=this;
+            onTrackedVideoFrame(this.currentTime, this.duration);
+            document.querySelector("#current_1").innerHTML=str_time(this.currentTime);
+            var current=parseInt(this.currentTime);
+            var duration=parseInt(this.duration);
+            var w=current/duration*100;
+            document.querySelector('.controls_b').style.width=w+"%";
+            document.querySelector('.controls_i').style.left=w+"%";
+        });
+        var startX, startY, moveEndX, moveEndY, X, Y,endX,endY,moveLength,crt,crt_w;
+        document.querySelector('.controls_i').addEventListener('touchstart',function(e){
+            document.querySelector('#vone').pause();
+            crt=document.querySelector('#current').innerHTML;
+            crt_w=document.querySelector('.controls').offsetWidth;
+            //                     startX = e.changedTouches[0].pageX,
+            startX =  document.querySelector('.controls').offsetLeft,
+                startY = e.changedTouches[0].pageY;
+            //                           console.log(crt_w,00000);
+        },false);
+        document.querySelector('.controls_i').addEventListener('touchmove',function(e){
+            moveEndX = e.changedTouches[0].pageX,
+                moveEndY = e.changedTouches[0].pageY,
+                X = moveEndX - startX,//正右负左
+                Y = moveEndY - startY;//正下负上
+            if(X>0){//右滑
+                document.querySelector('.controls_i').style.left=((moveEndX-startX)>crtime?crtime:(moveEndX-startX))+"px";
+                var crtime=parseInt(((moveEndX-startX)/crt_w)*(parseInt(document.querySelector("#vone").duration)));
+                //                               console.log(crtime);
+                document.querySelector("#vone").currentTime=crtime;
+                document.querySelector("#current_1").innerHTML=str_time(crtime);
+            }else if(X<0){//左滑
+            }
+        },false);
+        document.querySelector('.controls_i').addEventListener('touchend',function(e){
+            document.querySelector('#vone').play();
+        },false);
+        document.querySelector('#vone').addEventListener('touchstart',function(e){
+            this.play();
+        },false);
+        document.querySelector('.full').addEventListener('touchstart',function(e){
+            var video=document.querySelector('#vone');
+            video.style.width=100+"%";
+            video.style.height=100+"%";
+        },false);
+    })();
+    var sh=0,sm=0,ss=0;
+    function onTrackedVideoFrame(currentTime, duration){
+        var start_time=parseInt(currentTime);
+        var end_time=parseInt(duration);
+        var eh=parseInt(end_time/3600);
+        var em=parseInt((end_time-eh*3600)/60);
+        var es=parseInt(end_time-eh*3600-em*60);
+        //                       document.querySelector("#current_1").innerHTML=(sh>9?sh:("0"+sh))+":"+(sm>9?sm:("0"+sm))+":"+(ss>9?ss:("0"+ss));
+        document.querySelector("#duration").innerHTML=(eh>9?eh:"0"+eh)+":"+(em>9?em:"0"+em)+":"+(es>9?es:"0"+es);
+    }
+    function str_time(s_time){
+        var s_time=parseInt(s_time);
+        var sh=parseInt(s_time/3600);
+        var sm=parseInt((s_time-sh*3600)/60);
+        var ss=parseInt(s_time-sh*3600-sm*60);
+        return (sh>9?sh:("0"+sh))+":"+(sm>9?sm:("0"+sm))+":"+(ss>9?ss:("0"+ss));
+        //                               document.querySelector("#current_1").innerHTML=(sh>9?sh:("0"+sh))+":"+(sm>9?sm:("0"+sm))+":"+(ss>9?ss:("0"+ss));
+    }
+
+</script>
+
+</body>
+</html>

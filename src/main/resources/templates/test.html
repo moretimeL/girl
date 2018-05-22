@@ -1,0 +1,20 @@
+!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head>
+    <title>Hello World!</title>
+    <script type="text/javascript">
+        function  loading() {
+            var t = document.getElementById("tt");
+            alert(t.innerText);
+        }
+
+    </script>
+</head>
+
+<body onload="loading();">
+<h1 th:inline="text">Hello.v.2</h1>
+<!--/*@thymesVar id="hello" type=""*/-->
+<p  id="tt" th:text="${hello}"></p>
+</body>
+</html>
