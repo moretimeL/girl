@@ -1,4 +1,4 @@
-package com.hrd.girl;
+package com.hrd;
 
 import com.hrd.pojo.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;

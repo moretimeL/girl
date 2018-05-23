@@ -1,4 +1,4 @@
-package com.hrd.girl;
+package com.hrd;
 
 import com.hrd.pojo.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -17,8 +17,8 @@ public class GirlController
 {
     @Autowired
     private GirlRespository girlRepository;
-    @Autowired
-    private CommentRespository commentRespository;
+   // @Autowired
+   // private CommentRespository commentRespository;
     HttpClient httpClient = new HttpClient();
     @GetMapping("/load")
     public String load(){

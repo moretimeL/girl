@@ -1,4 +1,4 @@
-package com.hrd.girl;
+package com.hrd;
 
 import java.security.MessageDigest;
 

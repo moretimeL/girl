@@ -1,4 +1,4 @@
-package com.hrd.girl;
+package com.hrd;
 
 import org.springframework.data.jpa.repository.JpaRepository;
 

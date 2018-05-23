@@ -1,4 +1,4 @@
-package com.hrd.girl;
+package com.hrd;
 
 import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Component;
