@@ -5,6 +5,7 @@ import com.hrd.com.hrd.Entity.meeting;
 import com.hrd.pojo.HttpClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -24,6 +25,9 @@ import com.hrd.repository.*;
 @Controller
 
 public class WebController {
+
+    @Value("girl.uploadPath")
+    private String uploadPath;
 
     @Autowired
     private meetingRepository meetingRepository;
@@ -148,13 +152,10 @@ public class WebController {
             System.out.println("id="+operationID);
             String filename= operationID+".png";  //文件名字
             meet.setConference_picture_url(filename);
-            path = new File(ResourceUtils.getURL("classpath:").getPath());
-            if (!path.exists()) path = new File("");
-            System.out.println("path:" + path.getAbsolutePath());
-            String out_path = path.getAbsolutePath() + "\\static\\images\\";
+
             if (!inputfile.isEmpty()) {
                 BufferedOutputStream out = new BufferedOutputStream(
-                        new FileOutputStream(new File(out_path + filename)));//保存图片到目录下
+                        new FileOutputStream(new File(uploadPath+"/" + filename)));//保存图片到目录下
                 out.write(inputfile.getBytes());
                 out.flush();
                 out.close();
