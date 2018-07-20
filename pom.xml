@@ -77,10 +77,11 @@
 			<artifactId>weixin-java-mp</artifactId>
 			<version>2.9.0</version>
 		</dependency>
-
-
-		<!-- https://mvnrepository.com/artifact/net.sf.json-lib/json-lib -->
-		
+        <dependency>
+            <groupId>com.alibaba</groupId>
+            <artifactId>fastjson</artifactId>
+            <version>1.2.47</version>
+        </dependency>
 
 
 	</dependencies>

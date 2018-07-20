@@ -1,5 +1,6 @@
 package com.hrd;
 
+import com.hrd.com.hrd.Entity.comment;
 import com.hrd.pojo.HttpClient;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.core.io.FileSystemResource;
@@ -18,8 +19,13 @@ public class GirlController
     @Autowired
     private GirlRespository girlRepository;
    // @Autowired
+   // private meetingRepository meetingRepository;
+
+   //@Autowired
    // private CommentRespository commentRespository;
     HttpClient httpClient = new HttpClient();
+
+    //public GirlController(meetingRepository
     @GetMapping("/load")
     public String load(){
 
@@ -38,12 +44,12 @@ public class GirlController
     @GetMapping(value="/comments")
     public List<comment> girlList(){
 
-          return girlRepository.findAll();
-         //return (List<comment>) commentRespository.findAll();
+         // return girlRepository.findAll();
+         return (List<comment>) girlRepository.findAll();
     }
     @PostMapping( value = "/girls" )
     public comment girlAdd(@RequestParam("content") String content,
-                          @RequestParam("type") Integer type,
+                          @RequestParam("type") String type,
                                @RequestParam("username")  String username)
     {
         comment cmm = new comment();

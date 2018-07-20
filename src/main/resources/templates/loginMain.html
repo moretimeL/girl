@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>直播信息设置</title>
+    <link rel="stylesheet" href="https://cdn.bootcss.com/bootstrap/3.3.7/css/bootstrap.min.css">
+    <script src="https://cdn.bootcss.com/jquery/2.1.1/jquery.min.js"></script>
+    <script src="https://cdn.bootcss.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript">
+        XajaxHRD = function (par) {
+            //TODO参数验证
+
+            // alert('tttttt1');
+            var xhr = new XMLHttpRequest;
+            xhr.open(par.method, par.url, false);
+            //xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+            xhr.onload = function () {
+                par.success(xhr.responseText);
+            };
+            xhr.onerror = function () {
+                // alert('OK');
+            };
+
+            xhr.send(par.par);
+        };
+    </script>
+    <script type="text/javascript">
+        function delmessage(obj){
+            //alert("delete.......!");
+           if (obj.id=='firstdelete')
+           {
+               var con;
+               con=confirm("确认删除聊天记录?"); //在页面上弹出对话框
+               if(con==true) {
+                   $.post("/deleComment", {type: 1}, function (res) {
+                       window.location.reload();
+                   });
+               }
+           }
+           else if (obj.id=='seconddelete')
+           {
+               var con;
+               con=confirm("确认删除聊天记录?"); //在页面上弹出对话框
+               if(con==true) {
+                   $.post("/deleComment", {type:2}, function (res) {
+                       window.location.reload();
+                   });
+               }
+           }
+           else if (obj.id=='thirddelete')
+           {
+               var con;
+               con=confirm("确认删除聊天记录?"); //在页面上弹出对话框
+               if(con==true) {
+                   $.post("/deleComment", {type:3}, function (res) {
+                       window.location.reload();
+                   });
+               }
+           }
+            else if (obj.id == 'fourdelete')
+           {
+               var con;
+               con=confirm("确认删除聊天记录?"); //在页面上弹出对话框
+               if(con==true) {
+                   $.post("/deleComment", {type:4}, function (res) {
+                       window.location.reload();
+                   });
+               }
+           }
+        }
+
+        $(function () {
+            XajaxHRD({
+                url: "/getMeetingMessage",
+                method: "GET",
+                par: '',
+                success: function(txt) {
+                   // alert(txt);
+                    var json=JSON.parse(txt);
+                   $("#table1 tr:eq(1) td:nth-child(4)").html(json[0].conference_picture_url);
+
+                   $("#table1 tr:eq(1) td:nth-child(5)").html(json[0].meeting_stream);
+
+                   $("#table1 tr:eq(1) td:nth-child(3)").html(json[0].playName);
+
+                    $("#table1 tr:eq(2) td:nth-child(4)").html(json[1].conference_picture_url);
+
+                    $("#table1 tr:eq(2) td:nth-child(5)").html(json[1].meeting_stream);
+
+                    $("#table1 tr:eq(2) td:nth-child(3)").html(json[1].playName);
+
+                    $("#table1 tr:eq(3) td:nth-child(4)").html(json[2].conference_picture_url);
+
+                    $("#table1 tr:eq(3) td:nth-child(5)").html(json[2].meeting_stream);
+
+                    $("#table1 tr:eq(3) td:nth-child(3)").html(json[2].playName);
+
+                    $("#table1 tr:eq(4) td:nth-child(4)").html(json[3].conference_picture_url);
+
+                    $("#table1 tr:eq(4) td:nth-child(5)").html(json[3].meeting_stream);
+
+                    $("#table1 tr:eq(4) td:nth-child(3)").html(json[3].playName);
+                }
+            });
+
+        });
+      // function add_info() {
+
+
+        //   alert($("#videopath").val());   //视频路径
+        //   alert($("#inputfile").val());   //图片文件路径
+
+
+       //}
+        function editor(obj){
+           // alert(obj.id);
+           if (obj.id=='firstedit') {
+               $('#myModal').modal('show');
+               $('#myModal').on('shown.bs.modal', function (event) {
+                   var modal = $(this);  //get modal itself
+
+
+                   modal.find('.modal-body #operationID').val("1");
+                   modal.find('.modal-body #operationName').val("2号手术室");
+                   modal.find('.modal-body #mobelwebname').val("play1");
+
+
+               });
+           }else if (obj.id=='secondedit')
+           {
+               $('#myModal').modal('show');
+               $('#myModal').on('shown.bs.modal', function (event) {
+                   var modal = $(this);  //get modal itself
+
+
+                   modal.find('.modal-body #operationID').val("2");
+                   modal.find('.modal-body #operationName').val("3号手术室");
+                   modal.find('.modal-body #mobelwebname').val("play2");
+
+
+               });
+           }else if (obj.id=='threeedit')
+           {
+               $('#myModal').modal('show');
+               $('#myModal').on('shown.bs.modal', function (event) {
+                   var modal = $(this);  //get modal itself
+
+
+                   modal.find('.modal-body #operationID').val("3");
+                   modal.find('.modal-body #operationName').val("22号手术室");
+                   modal.find('.modal-body #mobelwebname').val("play3");
+
+
+               });
+
+           }else if (obj.id=='fouredit') {
+               $('#myModal').modal('show');
+               $('#myModal').on('shown.bs.modal', function (event) {
+                   var modal = $(this);  //get modal itself
+
+
+                   modal.find('.modal-body #operationID').val("4");
+                   modal.find('.modal-body #operationName').val("23号手术室");
+                   modal.find('.modal-body #mobelwebname').val("play4");
+
+
+               });
+           }
+        }
+    </script>
+</head>
+<body>
+<div class="panel panel-primary">
+    <div class="panel-heading">
+        <h3 class="panel-title">会议信息设置</h3>
+    </div>
+    <div class="panel-body" style="height: 100%;">
+        <table class="table table-bordered" id="table1">
+
+            <thead>
+            <tr>
+                <th>会议室ID</th>
+                <th>手术室名称</th>
+                <th>移动端网页名称</th>
+                <th>会议简介图片</th>
+                <th>视频流路径</th>
+                <th>删除聊天记录</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+                <td >1</td>
+                <td>2号手术室</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button id="firstdelete" type="button" class="btn btn-link"   style="font-size: 10px;" onclick="delmessage(this);">
+                    删除
+                </button></td>
+                <td><button id="firstedit" type="button" class="btn btn-link" data-toggle="modal"  style="font-size: 10px;" onclick="editor(this);">
+                   编辑
+                </button></td>
+            </tr>
+            <tr>
+                <td>2</td>
+                <td>3号手术室</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td> <button id="seconddelete" type="button" class="btn btn-link"   style="font-size: 10px;" onclick="delmessage(this);">
+                删除
+            </button></td>
+                <td><button id="secondedit" type="button" class="btn btn-link" data-toggle="modal"   style="font-size: 10px;" onclick="editor(this);" >
+                    编辑
+                </button></td>
+            </tr>
+            <tr>
+                <td>3</td>
+                <td>22号手术室</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button id="thirddelete" type="button" class="btn btn-link"   style="font-size: 10px;" onclick="delmessage(this)";>
+                    删除
+                </button></td>
+                <td><button id="thirdedit" type="button" class="btn btn-link" data-toggle="modal"   style="font-size: 10px;" onclick="editor(this);">
+                    编辑
+                </button></td>
+            </tr>
+            <tr>
+                <td>4</td>
+                <td>23号手术室</td>
+                <td></td>
+                <td></td>
+                <td></td>
+                <td><button id="fourdelete" type="button" class="btn btn-link"   style="font-size: 10px;"  onclick="delmessage(this)";>
+                    删除
+                </button></td>
+                <td><button  id="fouredit" type="button" class="btn btn-link" data-toggle="modal"   style="font-size: 10px;" onclick="editor(this);">
+                    编辑
+                </button></td>
+            </tr>
+
+
+
+            </tbody>
+        </table>
+    </div>
+    <!--弹出式提示框-->
+    <div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true"></span>
+                    </button>
+                    <h4 class="modal-title" id="myModalLabel">会议室设置</h4>
+                </div>
+                <div class="modal-body">
+                    <form role="form" id="form_data" action="/upload" method="post" enctype="multipart/form-data" >
+                        <div class="form-group">
+                            <label >手术室ID</label>
+                            <input type="text" class="form-control" id="operationID" name="operationID"
+                                   readonly="readonly"  />
+                        </div>
+                        <div class="form-group">
+                            <label >手术室名称</label>
+                            <input type="text" class="form-control" id="operationName" name="operationName"
+                                   readonly="readonly" />
+                        </div>
+                        <div class="form-group">
+                            <label >移动端网页名称</label>
+                            <input type="text" class="form-control" id="mobelwebname" name="mobelwebname"
+                                   dreadonly="readonly"/>
+                        </div>
+                        <div class="form-group">
+                            <label for="inputfile">会议简介图片(分辨率：690*620 文件类型PNG)</label>
+                            <input type="file" id="inputfile"  class="form-control" name="inputfile"/>
+
+                        </div>
+
+                        <div class="form-group">
+                            <label >视频流路径</label>
+                            <input type="text" class="form-control" id="videopath" name="videopath" />
+                        </div>
+                        <div class="modal-footer">
+                            <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                            <button type="submit" class="btn btn-primary"  >保存</button>
+                        </div>
+                    </form>
+
+
+                </div>
+
+            </div>
+        </div>
+    </div>
+     <!--另外一个设置-->
+    <div class="panel-heading">
+        <h3 class="panel-title">登录用户密码设置</h3>
+    </div>
+    <div class="panel-body" style="height: 100%;">
+        <table class="table table-bordered">
+
+            <thead>
+            <tr>
+                <th>用户名</th>
+                <th>操作</th>
+            </tr>
+            </thead>
+            <tr>
+                <td>admin</td>
+                <td><button type="button" class="btn btn-link" data-toggle="modal" data-target="#myModal1"  style="font-size: 10px;">
+                    编辑
+                </button></td>
+            </tr>
+        </table>
+    </div>
+
+
+</div>
+<div class="modal fade" id="myModal1" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true"></span>
+                </button>
+                <h4 class="modal-title" id="myModalLabel1">用户名密码</h4>
+            </div>
+            <form role="form" action="/password" method="get">
+            <div class="modal-body">
+
+                    <div class="form-group">
+                        <label >用户名</label>
+                        <input type="text" class="form-control" id="username" name="username"
+                               placeholder="admin" readonly="readonly"/>
+                    </div>
+
+                    <div class="form-group">
+                        <label >用户密码</label>
+                        <input type="text" class="form-control" id="password" name="password"
+                               />
+                    </div>
+
+
+
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+                <button type="submit" class="btn btn-primary">保存</button>
+            </div>
+            </form>
+        </div>
+    </div>
+</div>
+
+</body>
+</html>

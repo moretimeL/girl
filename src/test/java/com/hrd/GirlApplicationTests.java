@@ -1,5 +1,6 @@
 package com.hrd;
 
+import com.hrd.com.hrd.Entity.comment;
 import com.hrd.repository.CommentRepository;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -28,7 +29,7 @@ public class GirlApplicationTests {
 	public void pageTest(){
 
 
-		Page<comment> page1 = commentRepository.findComment(1, PageRequest.of(0,10));
+		Page<comment> page1 = commentRepository.findComment("1", PageRequest.of(0,10));
 
 		assertEquals(10,page1.getSize());
 
