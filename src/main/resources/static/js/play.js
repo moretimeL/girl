@@ -75,7 +75,7 @@ $(document).ready(function(){
     var myPlayer = videojs('my-player',{
         sources:[
             //  {type:'rtmp/flv',src:'rtmp://39.108.16.98/live/stream2'},
-            {type:'application/x-mpegURL',src:'http://39.108.16.98:8888/live/stream2.m3u8'}
+            {type:'application/x-mpegURL',src:'http://live.wang-guanjia.com/live/1.m3u8'}
         ]
     });
 
