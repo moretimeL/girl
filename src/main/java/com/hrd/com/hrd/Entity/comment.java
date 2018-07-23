@@ -3,10 +3,7 @@ package com.hrd.com.hrd.Entity;
 import org.springframework.data.annotation.CreatedDate;
 import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 
-import javax.persistence.Entity;
-import javax.persistence.EntityListeners;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 import java.util.Date;
 
 
@@ -14,7 +11,7 @@ import java.util.Date;
 //@EntityListeners(AuditingEntityListener.class)//做自增长
 public class comment {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;    //id是主键且自增长
 
     private String content; //评论的内容

@@ -2,11 +2,12 @@ package com.hrd.com.hrd.Entity;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 @Entity    //说明该类是映射数据对象
 public class meeting {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;    //id是主键且自增长
     private Integer meeting_id;//会议室ID
 
