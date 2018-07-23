@@ -20,6 +20,8 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Objects;
+
 import com.hrd.repository.*;
 
 @Controller
@@ -140,8 +142,13 @@ public class WebController {
                                      @RequestParam(value = "inputfile") MultipartFile inputfile,
                                      @RequestParam(value="videopath") String  videopath) {
         File path = null;
-        List<meeting> list=meetingRepository.findAll();
-        meeting temp=(meeting)list.get(0);
+       // List<meeting> list=meetingRepository.findAll();
+        meeting temp= null;
+        if(!meetingRepository.existsById(Integer.parseInt(operationID))){
+            temp = new meeting();
+        }else{
+            temp = meetingRepository.getOne(Integer.parseInt(operationID));
+        }
         String password = temp.getLogin_password();
         meeting meet = new meeting();
         meet.setId(Integer.parseInt(operationID));
