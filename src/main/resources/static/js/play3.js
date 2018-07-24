@@ -1,5 +1,20 @@
+HRD_stream = '';
 $(document).ready(function(){
     var url = location.href.split('#').toString();//url不能写死
+    $.ajax({
+        type : "get",
+        url : "/GetStreamURI",
+        dataType : "json",
+        async : false,
+        data:{id:3},
+        success : function(data) {
+            HRD_stream= data[4];    //返回路径
+        }        ,
+        error: function(xhr, status, error) {
+            //alert(status);
+            //alert(xhr.responseText);
+        }
+    });
     $.ajax({
         type : "get",
         url : "/wechatParam",
@@ -26,7 +41,7 @@ $(document).ready(function(){
         }
     });
     wx.ready(function () {
-        var link = 'http://9wg2sy.natappfree.cc/login';
+        var link = 'http://9wg2sy.natappfree.cc/login2;
         var protocol = window.location.protocol;
         var host = window.location.host;
         //分享朋友圈
@@ -75,7 +90,8 @@ $(document).ready(function(){
     var myPlayer = videojs('my-player',{
         sources:[
             //  {type:'rtmp/flv',src:'rtmp://39.108.16.98/live/stream2'},
-            {type:'application/x-mpegURL',src:'http://39.108.16.98:8888/live/stream2.m3u8'}
+            //{type:'application/x-mpegURL',src:'http://39.108.16.98:8888/live/stream2.m3u8'}
+            {type:'application/x-mpegURL',src:HRD_stream}
         ]
     });
 
