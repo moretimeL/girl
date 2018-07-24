@@ -13,7 +13,7 @@
    // window.location.href="https://open.weixin.qq.com/connect/oauth2/authorize?appid=wx591d0d4203841689&redirect_uri=http://songhui.tunnel.qydev.com/micomo/inter/BackWet&response_type=code&scope=snsapi_userinfo&state=index.html#wechat_redirect";
     var appid = 'wx5d6517be203ab637';  //更新公众号的时候要更改
     var appsecret ='e943caf002df1515d7fe93dd335aa224';   //更新公众号的时候要更改
-    var receiveurl=encodeURIComponent('http://9wg2sy.natappfree.cc/getCode');//只是更新域名的时候才更改
+    var receiveurl=encodeURIComponent(window.location.origin+'/getCode');//只是更新域名的时候才更改
     // alert('receiveurl'+receiveurl);snsapi_userinfo snsapi_base
     var paypar = ["appid="+appid,"redirect_uri="+receiveurl,"response_type=code","scope=snsapi_userinfo","state=STATE#wechat_redirect","_="+new Date().getMilliseconds()].join("&");
     var urlstr = 'https://open.weixin.qq.com/connect/oauth2/authorize?';

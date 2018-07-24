@@ -5,6 +5,7 @@ import com.hrd.com.hrd.Entity.meeting;
 import com.hrd.pojo.HttpClient;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.beans.factory.annotation.Value;
 import org.springframework.http.HttpMethod;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -19,11 +20,16 @@ import java.io.File;
 import java.io.FileOutputStream;
 import java.io.UnsupportedEncodingException;
 import java.util.List;
+import java.util.Objects;
+
 import com.hrd.repository.*;
 
 @Controller
 
 public class WebController {
+
+    @Value("girl.uploadPath")
+    private String uploadPath;
 
     @Autowired
     private meetingRepository meetingRepository;
@@ -285,8 +291,13 @@ public class WebController {
                                      @RequestParam(value = "inputfile") MultipartFile inputfile,
                                      @RequestParam(value="videopath") String  videopath) {
         File path = null;
-        List<meeting> list=meetingRepository.findAll();
-        meeting temp=(meeting)list.get(0);
+       // List<meeting> list=meetingRepository.findAll();
+        meeting temp= null;
+        if(!meetingRepository.existsById(Integer.parseInt(operationID))){
+            temp = new meeting();
+        }else{
+            temp = meetingRepository.getOne(Integer.parseInt(operationID));
+        }
         String password = temp.getLogin_password();
         meeting meet = new meeting();
         meet.setId(Integer.parseInt(operationID));
@@ -297,13 +308,10 @@ public class WebController {
             System.out.println("id="+operationID);
             String filename= operationID+".png";  //文件名字
             meet.setConference_picture_url(filename);
-            path = new File(ResourceUtils.getURL("classpath:").getPath());
-            if (!path.exists()) path = new File("");
-            System.out.println("path:" + path.getAbsolutePath());
-            String out_path = path.getAbsolutePath() + "\\static\\images\\";
+
             if (!inputfile.isEmpty()) {
                 BufferedOutputStream out = new BufferedOutputStream(
-                        new FileOutputStream(new File(out_path + filename)));//保存图片到目录下
+                        new FileOutputStream(new File(uploadPath+"/" + filename)));//保存图片到目录下
                 out.write(inputfile.getBytes());
                 out.flush();
                 out.close();

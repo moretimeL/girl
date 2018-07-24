@@ -83,10 +83,10 @@
             <version>1.2.47</version>
         </dependency>
 
-
-	</dependencies>
+    </dependencies>
 
 	<build>
+		<finalName>girl</finalName>
 		<plugins>
 			<plugin>
 				<groupId>org.springframework.boot</groupId>
