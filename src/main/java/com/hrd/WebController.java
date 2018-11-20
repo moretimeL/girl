@@ -49,10 +49,9 @@ public class WebController {
     @RequestMapping(value= "/main" , method= RequestMethod.GET)
 
      public String kw12(){
+        return "loginMain";
+    }
 
-
-
-        return "loginMain";}
     @RequestMapping(value= "/password" , method= RequestMethod.GET)
     public String password(@RequestParam("password") String password){
         List<meeting> list=meetingRepository.findAll();
@@ -64,8 +63,6 @@ public class WebController {
         meet.setPlayName(temp.getPlayName());
         meet.setMeeting_stream(temp.getMeeting_stream());
         meetingRepository.save(meet);
-
-
         return "loginMain";
 
     }

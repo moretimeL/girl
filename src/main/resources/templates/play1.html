@@ -6,12 +6,11 @@
     <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
     <meta name="x5-orientation" content="portrait" />
     <script src="js/jquery.js"></script>
-   <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
     <link href="js/videojs/video-js.css" rel="stylesheet">    <!--引用HTML5播放器的架构css-->
     <script src="js/videojs/video.min.js"></script>                    <!--应用HTML5播放器的架构js-->
     <script src="js/play1.js" ></script>
     <script>
-
         var counter = 0; /*计数器*/
         var pageStart = 0; /*offset*/
         var pageSize = 4; /*size*/
@@ -23,15 +22,12 @@
 
         }
         function load() {    //窗口方向
-
             window.onorientationchange = function (event) {
                 window.orientation = 0;
                 event.stopPropagation();
                 event.cancelBubble = true;
 
             };
-
-
             var btnForm = document.querySelector(".open");    //提交评论
             btnForm.onclick = function (evt) {
                 // alert('提交成功！');
@@ -324,7 +320,6 @@
     </div>
     <div class="box">
         <div class="YaoYao hide">
-
         </div>
         <div class="r1 hide">
             <!--  <a href="">
@@ -347,11 +342,8 @@
                            preload="auto"
                            autoplay="autoplay"
                            controls>
-
                     </video>
-
                 </div>
-
             </div>
         </div>
        <div id="Vcon">
