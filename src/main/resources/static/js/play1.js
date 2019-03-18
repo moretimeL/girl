@@ -92,7 +92,8 @@ $(document).ready(function(){
         sources:[
             //  {type:'rtmp/flv',src:'rtmp://39.108.16.98/live/stream2'},
             //{type:'application/x-mpegURL',src:'http://39.108.16.98:8888/live/stream2.m3u8'}
-            {type:'application/x-mpegURL',src:HRD_stream}
+            // {type:'application/x-mpegURL',src:"HRD_stream"},
+			{src:"../static/video/video.mp4"}
         ]
     });
 

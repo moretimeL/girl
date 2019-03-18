@@ -49,9 +49,10 @@ public class WebController {
     @RequestMapping(value= "/main" , method= RequestMethod.GET)
 
      public String kw12(){
-        return "loginMain";
-    }
 
+
+
+        return "loginMain";}
     @RequestMapping(value= "/password" , method= RequestMethod.GET)
     public String password(@RequestParam("password") String password){
         List<meeting> list=meetingRepository.findAll();
@@ -63,6 +64,8 @@ public class WebController {
         meet.setPlayName(temp.getPlayName());
         meet.setMeeting_stream(temp.getMeeting_stream());
         meetingRepository.save(meet);
+
+
         return "loginMain";
 
     }
@@ -102,8 +105,10 @@ public class WebController {
     }
 
     @RequestMapping(value = "/getCode",method=RequestMethod.GET)
+    //微信端传来的code
     public String getCode(@RequestParam("code") String code,Model model)
     {
+       // System.out.println(code);
         //获取用户名验证
         String requestUrl = "https://api.weixin.qq.com/sns/oauth2/access_token?appid=APPID&secret=SECRET&code=CODE&grant_type=authorization_code";
         requestUrl = requestUrl.replace("APPID", "wx5d6517be203ab637");

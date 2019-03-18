@@ -1,16 +1,18 @@
 <!DOCTYPE html >
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head><meta http-equiv="Content-Type" content="text/html; charset=utf-8" /><title>
-    湖南省肿瘤医院在线1套
+	柳叶名刀高清直播系统
 </title>
-    <meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
-    <meta name="x5-orientation" content="portrait" />
-    <script src="js/jquery.js"></script>
-    <script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
-    <link href="js/videojs/video-js.css" rel="stylesheet">    <!--引用HTML5播放器的架构css-->
-    <script src="js/videojs/video.min.js"></script>                    <!--应用HTML5播放器的架构js-->
-    <script src="js/play1.js" ></script>
-    <script>
+	<meta name="viewport" content="width=640, target-densitydpi=device-dpi, user-scalable=no" />
+	<meta name="x5-orientation" content="portrait" />
+	<script src="../static/js/jquery.js"></script>
+	<script src="http://res.wx.qq.com/open/js/jweixin-1.0.0.js" type="text/javascript"></script>
+	<link href="../static/js/videojs/video-js.css" rel="stylesheet">    <!--引用HTML5播放器的架构css-->
+	<script src="../static/js/videojs/video.min.js"></script>                    <!--应用HTML5播放器的架构js-->
+	<script src="../static/js/play1.js" ></script>
+	<script type="text/javascript" src="../static/js/cyberplayer.js"></script>
+	<script>
+
         var counter = 0; /*计数器*/
         var pageStart = 0; /*offset*/
         var pageSize = 4; /*size*/
@@ -18,16 +20,19 @@
         function loadmore()
         {
             if (document.getElementById('msgmore').innerHTML=='查看更多')
-                 pageSize += 4;
+                pageSize += 4;
 
         }
         function load() {    //窗口方向
+
             window.onorientationchange = function (event) {
                 window.orientation = 0;
                 event.stopPropagation();
                 event.cancelBubble = true;
 
             };
+
+
             var btnForm = document.querySelector(".open");    //提交评论
             btnForm.onclick = function (evt) {
                 // alert('提交成功！');
@@ -39,7 +44,7 @@
                 // if (posting) return alert("网络正忙，您可以尝试重新提交。");
                 var ipt = document.querySelector(".eer input");
                 var msg = ipt.value;
-               // alert('msg=' + msg);
+                // alert('msg=' + msg);
                 if (!msg) return alert("请输入评论内容");
                 if (msg.length > 100) return alert("输入内容需在100字以内");
                 alert('msg='+msg);
@@ -49,12 +54,9 @@
                     "icon=" + headimgurl,
                     "content=" + encodeURIComponent(msg)
                 ].join("&");
-
-
-
-                 Post(function (txt) {
-                  ipt.value = "";
-                  alert("您已评论成功！");
+                Post(function (txt) {
+                    ipt.value = "";
+                    alert("您已评论成功！");
 
                 }, par);
 
@@ -62,337 +64,455 @@
 
             };
 
-             function loadmessage()
-             {
+            function loadmessage()
+            {
+                var par = [
+                    "type=" + type,  /*会议类型编号*/
+                    "pageIndex=" + pageStart,/*初始编号*/
+                    "pageSize=" + pageSize  /*获取的长度个数*/
+                ].join("&");
 
-                 var par = [
-                      "type=" + type,  /*会议类型编号*/
-                      "pageIndex=" + pageStart,/*初始编号*/
-                      "pageSize=" + pageSize  /*获取的长度个数*/
-                  ].join("&");
+                var url = "/getComment?"+par;
+                PostData(url,function (txt) {   /*Ajax返回的数据*/
 
-                 var url = "/getComment?"+par;
-                  PostData(url,function (txt) {   /*Ajax返回的数据*/
-
-                      var json=JSON.parse(txt);//将返回的json字符串转换成对象
+                    var json=JSON.parse(txt);//将返回的json字符串转换成对象
                     //  alert(json.totalElements);
-                      if (parseInt(json.totalElements)<pageSize)
-                          document.getElementById('msgmore').innerHTML="没有更多";
-                      else
-                          document.getElementById('msgmore').innerHTML="查看更多";
-                      //alert(txt);
-                      //alert(json.content);   //输出返回的json串
-                      //alert("name="+json.content[0][4]);
-                      //alert("time="+json.content[0][5]);
-                      //alert("text="+json.content[0][2]);
-                      //alert("yes="+json.content[0][1]);
-                      var html_inner_content = "";   //应该获取页面的列表节点，暂时清空了
-                      var k = document.getElementById('parentul').childNodes;//获取用户列表中的所有子节点
-                      var parentul=document.getElementById('parentul');
-                      parentul.innerHTML=" <li class=\"hide\" >" +
-                          "" +
-                          "                                    <div class=\"user\">" +
-                          "" +
-                          "                                        <img width=\"60\" height=\"60\" src=\"text1\"/>" +
-                          "                                        <p>Name</p>Time<a href=\"javascript:void(0);\" onclick=\"reply(this)\" style=\"float:right;\"><img  style=\"border-radius:0;\" src=\"images/pl.jpg\" /><span style=\"display:none\">123</span></a>" +
-                          "" +
-                          "                                    </div>" +
-                          "                                    <p class=\"say\">yes</p>" +
-                          "                                </li>";
-                      for ( var m = 0 ; m < json.content.length;m++)
-                      {
-                          var li = document.createElement("li"); //生成li节点
-                          var name = json.content[m][4];   //获取评论者的名称
-                          var time = json.content[m][5];   //获取评论时间
-                          var image = json.content[m][2];  //获取评论者的图片编码
-                          var comment = json.content[m][1];//获取评论者发表的内容
-                          html_inner_content +=  k[1].innerHTML.replace(/Name/g,name).replace(/Time/g,time).replace(/text1/g,image).replace(/yes/g,comment);//替换模板中的相关名称、时间、图片、评论内容
-                         // li.appendChild(html_inner_content);
+                    if (parseInt(json.totalElements)<pageSize)
+                        document.getElementById('msgmore').innerHTML="没有更多";
+                    else
+                        document.getElementById('msgmore').innerHTML="查看更多";
+                    //alert(txt);
+                    //alert(json.content);   //输出返回的json串
+                    //alert("name="+json.content[0][4]);
+                    //alert("time="+json.content[0][5]);
+                    //alert("text="+json.content[0][2]);
+                    //alert("yes="+json.content[0][1]);
+                    var html_inner_content = "";   //应该获取页面的列表节点，暂时清空了
+                    var k = document.getElementById('parentul').childNodes;//获取用户列表中的所有子节点
+                    var parentul=document.getElementById('parentul');
+              /*      parentul.innerHTML=" <li class=\"hide\" >" +
+                        "" +
+                        "                                    <div class=\"user\">" +
+                        "" +
+                        "                                        <img width=\"60\" height=\"60\" src=\"text1\"/>" +
+                        "                                        <p>Name</p>Time<a href=\"javascript:void(0);\" onclick=\"reply(this)\" style=\"float:right;\"><img  style=\"border-radius:0;\" src=\"images/pl.jpg\" /><span style=\"display:none\">123</span></a>" +
+                        "" +
+                        "                                    </div>" +
+                        "                                    <p class=\"say\">yes</p>" +
+                        "                                </li>";*/
 
-                      }//此循环结束之后html_inner_content中的为列表追加的内容
-                      li.innerHTML = html_inner_content;
-
-                      parentul.appendChild(li);
+                    parentul.innerHTML = "<li class=\"\" >\n" +
+                        "\t\t\t\t\t\t\t\t\t<div class=\"user\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<img width=\"60\" height=\"60\" src=\"text1\"/>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<p>Name</p>Time\n" +
+                        "\t\t\t\t\t\t\t\t\t\t<a href=\"javascript:void(0);\" onclick=\"reply(this)\" style=\"float:left;\">\n" +
+                        "\t\t\t\t\t\t\t\t\t\t\t<span class=\"ppg\">yes</span>\n" +
+                        "\t\t\t\t\t\t\t\t\t\t</a>\n" +
+                        "\t\t\t\t\t\t\t\t\t</div>\n" +
+                        "\t\t\t\t\t\t\t\t\t<p class=\"say\"></p>\n" +
+                        "\t\t\t\t\t\t\t\t</li>";
 
 
+                    for ( var m = 0 ; m < json.content.length;m++)
+                    {
+                        var li = document.createElement("li"); //生成li节点
+                        var name = json.content[m][4];   //获取评论者的名称
+                        var time = json.content[m][5];   //获取评论时间
+                        var image = json.content[m][2];  //获取评论者的图片编码
+                        var comment = json.content[m][1];//获取评论者发表的内容
+                        html_inner_content +=  k[1].innerHTML.replace(/Name/g,name).replace(/Time/g,time).replace(/text1/g,image).replace(/yes/g,comment);//替换模板中的相关名称、时间、图片、评论内容
+                        // li.appendChild(html_inner_content);
 
+                    }//此循环结束之后html_inner_content中的为列表追加的内容
+                    li.innerHTML = html_inner_content;
 
-                  }, null);
-             }
+                    parentul.appendChild(li);
+
+                }, null);
+            }
             setInterval(loadmessage,700);
 
 
 
         }
 
-    </script>
+	</script>
 </head>
 <body onload="load()">
 <style type="text/css">
-    @media screen and (orientation:portrait) { @-ms-viewport{ width: 640px } }
-    @media screen and (orientation:landscape) { @-ms-viewport{ height: 1008px } }
-    body{ margin: 0mm; font: 8mm/2em 微软雅黑; color: #333 }
-    body a{ color: #000; text-decoration: none }
-    ul,li {list-style:none;}
-    .fl{ float: left }
-    .fr{ float: right }
-    .red{ color:red }
-    .hide{ display: none }
-    .box{ width: 640px; margin: 0mm auto; }
-    .r1{ height:90px; background-color:#333;position:relative;  }
-    .r6{ height: 60px; }
-    .r6 font.fr{font: 7mm/40px 微软雅黑; line-height: 60px; padding: 0mm 1mm 0mm 0mm }
-    .r2{ height: 360px; background-color:#333;position:relative; }
+	@media screen and (orientation:portrait) { @-ms-viewport{ width: 640px } }
+	@media screen and (orientation:landscape) { @-ms-viewport{ height: 1008px } }
+	body{ margin: 0mm; font: 8mm/2em 微软雅黑; color: #333;}
+	body a{ color: #000; text-decoration: none }
+	ul,li {list-style:none;}
+	.fl{ float: left }
+	.fr{ float: right }
+	.red{ color:red }
+	.hide{ display: none }
+	.box{ width: 640px; margin: 0mm auto; }
+	.r1{ height:90px; background-color:#333;position:relative;  }
+	.r6{ height: 60px; }
+	.r6 font.fr{font: 7mm/40px 微软雅黑; line-height: 60px; padding: 0mm 1mm 0mm 0mm }
+	.r2{ height: 300px; background-color:#333;position:relative; }
 
-    .r5{ height: 40px; background-color: #333; color:#fff; font: 7mm/40px 微软雅黑; padding: 0mm 1cm }
-    .r3{ height: 90px; }
-    .r3 font.fr a{ font: 6mm/45px 微软雅黑; background-color: #f80; color: #333; padding: 0mm 6mm; border-radius: 3mm; float: right; margin: 6mm 0mm 0mm 3mm }
-    .r4 .tab{ text-align: center; height: 90px; background-color: #e9e9e9; }
-    .r4 .tab a{ border-bottom: 4px solid #ccc; float: left; width: 33%; height: 86px; line-height: 86px; color: #888 }
-    .r4 .tab a.act{ border-bottom-color: #f80; color: #333 }
-    .r4 .tab a:nth-of-type(2){ width: 34% }
-    .detail > p {display:block;margin:0; }
-    .detail{ margin: 0px; color: #333 }
-    .detail img{ max-width:100%;}
-    .detail pre, .detail .pre{ margin: 0mm; padding: 0mm 1cm 5mm; font: 7mm/2em 微软雅黑 }
-    .detail p.btn{ margin: 0mm; height: 70px; background-color: #e9e9e9; position: fixed; bottom: 0mm }
-    .detail p.btn{ width: 640px; left: 50%; margin-left: -320px; text-align: center; padding: 10px 0mm }
-    .detail p.btn a{ display: inline-block; background-color: #f80; color: #fff; font: 8mm/70px 微软雅黑; width: 360px; border-radius: 3mm }
-    .r4_1{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
-    .r4_1 .pl{ color: #f80; background: url(Imgs/Write.png) no-repeat 0% 50%; padding-left: 2.5pc }
-    .r4_1 .ds{ color: #f80; background: url(Imgs/dasha.png) no-repeat 0% 50%; padding-left: 2.5pc }
-    .r4_2{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
-    .r4_2 .pl{ color: #f80; background: url(Imgs/manc2.png) no-repeat 0% 50%; padding-left: 3pc }
-    .r4_2 .ds{ color: #f80; background: url(Imgs/manct.png) no-repeat 0% 50%; padding-left: 3pc }
-    .quickpay{color: #f80; padding-left: 1pc}
-
-
-    .r4 .rrr{ margin: 0mm; list-style: none; padding: 0mm 8mm }
-    .r4 .rrr li{ border-bottom: 1px solid #e9e9e9; padding: 8mm 0mm 5mm }
-    .r4 .rrr li .user{ height: 60px; font: 6mm/25px 微软雅黑; color: #888 }
-    .r4 .rrr li .user img{ float: left; border-radius: 30px; background-image: radial-gradient(#fff, #888); margin-right: 3mm }
-    .r4 .rrr li .user p{ margin: 0mm; font: 7mm/35px 微软雅黑; color: #333; height: 35px; overflow: hidden }
-    .r4 .rrr li p.say{ background-color: #f5f5f5; font: 7mm/1cm 微软雅黑; padding: 2mm 4mm; margin: 3mm 0mm 0mm 70px; border-radius: 2mm ;overflow:hidden; }
-    .r4 p.more{ text-align: center; color: #888;margin-bottom:90px; }
+	.r5{ height: 40px; background-color: #333; color:#fff; font: 7mm/40px 微软雅黑; padding: 0mm 1cm }
+	.r3{ height: 90px; }
+	.r3 font.fr a{ font: 6mm/45px 微软雅黑; background-color: #f80; color: #333; padding: 0mm 6mm; border-radius: 3mm; float: right; margin: 6mm 0mm 0mm 3mm }
+	.r4 .tab{ text-align: center; height: 90px; background-color: #E9E9E9;}
+	.r4 .tab a{ border-bottom: 4px solid #ccc; float: left; width: 33%; height: 86px; line-height: 92px; color: #888 }
+	.r4 .tab a.act{ border-bottom-color: #FF8800; color: #333 }
+	.r4 .tab a:nth-of-type(2){ width: 33%;height: 86px;  }
+	.detail > p {display:block;margin:0; }
+	.detail{ margin: 0px; color: #333 }
+	.detail img{ max-width:650px;}
+	.detail p.btn{ margin: 0mm; height: 70px; background-color: #e9e9e9; position: fixed; bottom: 0mm }
+	.detail p.btn{ width: 640px; left: 50%; margin-left: -320px; text-align: center; padding: 10px 0mm }
+	.detail p.btn a{ display: inline-block; background-color: #f80; color: #fff; font: 8mm/70px 微软雅黑; width: 360px; border-radius: 3mm }
+	.r4_1{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
+	.r4_1 .pl{ color: #f80; background: url(Imgs/Write.png) no-repeat 0% 50%; padding-left: 2.5pc }
+	.r4_1 .ds{ color: #f80; background: url(Imgs/dasha.png) no-repeat 0% 50%; padding-left: 2.5pc }
+	.r4_2{ height: 50px; line-height: 50px; color: #888; padding: 5mm 5mm; border-bottom: 1px solid #e9e9e9 }
+	.r4_2 .pl{ color: #f80; background: url(Imgs/manc2.png) no-repeat 0% 50%; padding-left: 3pc }
+	.r4_2 .ds{ color: #f80; background: url(Imgs/manct.png) no-repeat 0% 50%; padding-left: 3pc }
+	.quickpay{color: #f80; padding-left: 1pc}
 
 
-    .post{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6); }
-    .post div{ width: 640px; background-color: #e9e9e9; position: fixed; bottom:0px; }
-    .post p.txt{ margin: 0mm; padding: 4mm }
-    .post textarea{ display: block; width: 100%; background-color: transparent; border: none; height: 100px; font: 7mm/1cm 微软雅黑; color: #333 }
-    .post div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
-    .post div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
-    .post div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
+	.r4 .rrr{ margin: 0mm; list-style: none; padding: 0mm 8mm }
+	.r4 .rrr li{ border-bottom: 1px solid #e9e9e9; padding: 8mm 0mm 5mm }
+	.r4 .rrr li .user{ height: 60px; font: 6mm/25px 微软雅黑; color: #888 }
+	.r4 .rrr li .user img{ float: left; border-radius: 30px; background-image: radial-gradient(#fff, #888); margin-right: 3mm }
+	.r4 .rrr li .user p{ margin: 0mm; font: 7mm/35px 微软雅黑; color: #333; height: 35px; overflow: hidden }
+	/* htc */
+	.r4 .rrr li p.say{ background-color: #f5f5f5; font: 7mm/1cm 微软雅黑; padding: 2mm 4mm; margin: 3mm 0mm 0mm 70px; border-radius: 2mm ;overflow:hidden; }
+	.r4 p.more{ text-align: center; color: #888;margin-bottom:90px; }
 
-    .allpic{ width: 640px;  position: fixed; top: 0mm; height:1008px; margin:0 auto; z-index:200;}
-    .allpic img { width:100%; height:100%;}
-    .pwdsend {border-radius: 3mm; width: 400px; background-color: #e9e9e9; position: absolute; top: 500px; left: 50%; margin: -260px 0mm 0mm -200px; overflow: hidden;z-index:500; }
-    .pwdsend input{ display: block; width: 100%; background-color: transparent; border: none; height: 80px; font: 7mm/1cm 微软雅黑; color: #333;text-align:center }
-    .pwdsend p.btn{ margin: 0mm; background-color: #fff; height: 80px }
-    .pwdsend p.btn a{ float: left; width: 100%; text-align: center; line-height: 80px; border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
 
-    .dashang{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6);z-index:100;}
-    .dashang div{ width: 640px; background-color: #e9e9e9; position:fixed; bottom:0px; overflow: hidden }
-    .dashang input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333;padding-left:10px; }
-    .dashang div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
-    .dashang div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
-    .dashang div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
-    .dashang div ul{list-style:none;margin:0;padding:0;}
-    .dashang div ul li{width:25%;float:left;}
-    .dashang div ul li img{height:60px;}
-    .sel{background-color:#ccc;}
+	.post{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6); }
+	.post div{ width: 640px; background-color: #e9e9e9; position: fixed; bottom:0px; }
+	.post p.txt{ margin: 0mm; padding: 4mm }
+	.post textarea{ display: block; width: 100%; background-color: transparent; border: none; height: 100px; font: 7mm/1cm 微软雅黑; color: #333 }
+	.post div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+	.post div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
+	.post div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
 
-    .dspay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) ;z-index:1000;}
-    .dspay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
-    .dspay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
-    .dspay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
-    .dspay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
+	.allpic{ width: 640px;  position: fixed; top: 0mm; height:1008px; margin:0 auto; z-index:200;}
+	.allpic img { width:100%; height:100%;}
+	.pwdsend {border-radius: 3mm; width: 400px; background-color: #e9e9e9; position: absolute; top: 500px; left: 50%; margin: -260px 0mm 0mm -200px; overflow: hidden;z-index:500; }
+	.pwdsend input{ display: block; width: 100%; background-color: transparent; border: none; height: 80px; font: 7mm/1cm 微软雅黑; color: #333;text-align:center }
+	.pwdsend p.btn{ margin: 0mm; background-color: #fff; height: 80px }
+	.pwdsend p.btn a{ float: left; width: 100%; text-align: center; line-height: 80px; border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
 
-    .orderpay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) }
-    .orderpay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
-    .orderpay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
-    .orderpay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
-    .orderpay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
+	.dashang{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6);z-index:100;}
+	.dashang div{ width: 640px; background-color: #e9e9e9; position:fixed; bottom:0px; overflow: hidden }
+	.dashang input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333;padding-left:10px; }
+	.dashang div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+	.dashang div p.btn a{ float: left; width: 50%; text-align: center; line-height: 100px; color: #888 }
+	.dashang div p.btn a:nth-of-type(2){ border-left: 1px solid #ccc; margin-left: -1px; color: #f80 }
+	.dashang div ul{list-style:none;margin:0;padding:0;}
+	.dashang div ul li{width:25%;float:left;}
+	.dashang div ul li img{height:60px;}
+	.sel{background-color:#ccc;}
 
-    .YaoYao{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px;z-index:1000;  }
-    .YYY{ border-radius: 3mm; width: 500px;background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden}
-    .yao{ margin:0px auto; width:400px; text-align:center; }
-    .process{ margin:50px auto; width:1px; height:20px; background-color:#eee; }
-    .info{ margin:50px auto; color:#fff; text-align:center;}
-    .redpack{ clear:both; margin:50px auto; width:504px; height:163px; background:url(Imgs/yaohongbao.png) no-repeat; }
-    .redinfo{ clear:both; color:#fff; margin-left:160px; line-height:40px; margin-top:20px;}
+	.dspay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) ;z-index:1000;}
+	.dspay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
+	.dspay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
+	.dspay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+	.dspay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
 
-    .pindao {width:620px;margin:0 auto;padding:0;}
-    .pindao ul {width:620px;margin:0 auto;padding:0;}
-    .pindao ul li{width:299px;margin-top:10px;float:left; }
-    .pindao ul li p{width:290px; margin:0 auto; }
-    .pindao ul li p a{width:290px;}
-    .ptitle{width:280px;height:20px;line-height:20px; overflow:hidden; font-size:20px;text-align:center;}
-    .pimg{width:290px;height:168px; }
-    .pindaomore{ text-align: center; color: #888; width:640px; height:90px; line-height:90px; }
+	.orderpay{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px; background-color: rgba(0, 0, 0, 0.6) }
+	.orderpay div{border-radius: 3mm; width: 500px; background-color: #e9e9e9; position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden }
+	.orderpay input{ display: block; width: 100%; background-color: transparent; border: none; height: 50px; font: 7mm/1cm 微软雅黑; color: #333 }
+	.orderpay div p.btn{ margin: 0mm; background-color: #fff; height: 100px }
+	.orderpay div p.btn a{ float: left; width: 100%; text-align: center; color: #888 }
 
-    .top3 { width: 640px;height: 180px;margin-top: 30px; margin-bottom: 10px;padding-bottom:10px; border-bottom:1px solid #ccc }
-    .top3 div {float: left;}
-    .top3-l1 {width: 270px;margin-left: 10px;height: 180px;}
-    .top3-l1 img{width: 270px; height: 180px;}
-    .top3-r1 {width: 320px;margin-left: 20px;height: 160px;}
-    .top3-r1-1 { height: 40px;width: 320px;line-height: 40px;font-weight:600;overflow: hidden; font-size:30px;margin-top:10px;}
-    .top3-r1-2 {height: 40px;line-height: 40px;color: #ff6a00;font-size:30px;overflow: hidden;margin-top:5px; }
-    .top3-r1-3 {height: 40px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:25px;margin-top:10px;}
-    .lj {margin-left: 10px; padding: 2px 10px;background-color: #ff6a00; color: white;}
-    .lj a {color: wheat;}
-    .top3-r1-4{height: 30px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:20px;margin-top:5px;overflow:hidden}
-    .fc-box{height: 40px;line-height: 40px;color: #888;padding: 5mm 5mm;border-bottom: 1px solid #e9e9e9;}
-    .user-prompt{height: 65px;color: #888;padding: 5mm 5mm;border-bottom: 1px solid #e9e9e9;}
-    .fc{font-size:30px;color:#f80;}
-    .input{height:80px;width:640px;margin:0 auto;position:fixed;bottom:0;background:#f5f5f7;}
-    .eer{margin:0;width:80%;display:inline-block;margin-left:10px;border:1px solid #ccc;border-radius:20px;margin-top:8px;background:#fff;}
-    .eer input{height:58px;width:90%;border:0;outline:none;padding:0;font-size:25px;margin-left:10px;margin-top:-2px;}
-    .eer img{vertical-align: middle;margin-left:8px;}
-    .img-box img{margin-top:14px;}
-    .img-box{width:15%;text-align:center;margin:0;position:absolute;right:2.5%;top:0;height:80px;}
+	.YaoYao{ width: 640px; position: fixed; top: 0mm; left: 50%; margin-left: -320px;z-index:1000;  }
+	.YYY{ border-radius: 3mm; width: 500px;background-color: rgba(0, 0, 0, 0.8); position: absolute; top: 50%; left: 50%; margin: -260px 0mm 0mm -250px; overflow: hidden}
+	.yao{ margin:0px auto; width:400px; text-align:center; }
+	.process{ margin:50px auto; width:1px; height:20px; background-color:#eee; }
+	.info{ margin:50px auto; color:#fff; text-align:center;}
+	.redpack{ clear:both; margin:50px auto; width:504px; height:163px; background:url(Imgs/yaohongbao.png) no-repeat; }
+	.redinfo{ clear:both; color:#fff; margin-left:160px; line-height:40px; margin-top:20px;}
 
-    .scoY{overflow-y: scroll}
+	.pindao {width:620px;margin:0 auto;padding:0;}
+	.pindao ul {width:620px;margin:0 auto;padding:0;}
+	.pindao ul li{width:299px;margin-top:10px;float:left; }
+	.pindao ul li p{width:290px; margin:0 auto; }
+	.pindao ul li p a{width:290px;}
+	.ptitle{width:280px;height:20px;line-height:20px; overflow:hidden; font-size:20px;text-align:center;}
+	.pimg{width:290px;height:168px; }
+	.pindaomore{ text-align: center; color: #888; width:640px; height:90px; line-height:90px; }
 
-    .aaaa{
-        margin-bottom: 90px;
-    }
-    video::-webkit-media-controls-enclosure {
-        display: none !important;
-    }
-    #controls{
-        width: 100%;
-        height: 36px;
-        padding-top: 3px;
-        line-height: 36px;
-    }
-    .controls{
-        width:55%;
-        /*display: block;*/
-        height: 10px;
-        background: #ccc;
-        margin: 10px auto;
-        position: relative;
-        left: 3%;
-        right: 5%;
-        float: left;
-    }
-    .controls b{
-        position: absolute;
-        top: 0;
-        left: 0;
-        width: 0;
-        height: 100%;
-        background: blue;
-    }
-    .controls i {
-        width: 30px;
-        height: 30px;
-        border-radius: 50%;
-        background: #ddd;
-        position: absolute;
-        top: -10px;
-    }
-    #controls span{
-        text-align: center;
-        /*display: none;*/
-        font-size: 18px;
-        height: 100%;
-    }
-    #controls em{
-        width: 15%;
-        height: 100%;
-        line-height: 36px;
-        /*margin-right: 20px;*/
-    }
+	.top3 { width: 640px;height: 180px;margin-top: 30px; margin-bottom: 10px;padding-bottom:10px; border-bottom:1px solid #ccc }
+	.top3 div {float: left;}
+	.top3-l1 {width: 270px;margin-left: 10px;height: 180px;}
+	.top3-l1 img{width: 270px; height: 180px;}
+	.top3-r1 {width: 320px;margin-left: 20px;height: 160px;}
+	.top3-r1-1 { height: 40px;width: 320px;line-height: 40px;font-weight:600;overflow: hidden; font-size:30px;margin-top:10px;}
+	.top3-r1-2 {height: 40px;line-height: 40px;color: #ff6a00;font-size:30px;overflow: hidden;margin-top:5px; }
+	.top3-r1-3 {height: 40px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:25px;margin-top:10px;}
+	.lj {margin-left: 10px; padding: 2px 10px;background-color: #ff6a00; color: white;}
+	.lj a {color: wheat;}
+	.top3-r1-4{height: 30px;width: 320px;line-height: 30px;color: #808080;overflow: hidden;font-size:20px;margin-top:5px;overflow:hidden}
+	.fc-box{height: 40px;line-height: 40px;color: #888;padding: 5mm 5mm;border-bottom: 1px solid #e9e9e9;}
+	/* htc */
+	.user-prompt{height: 65px;color: #888;padding: 5mm 5mm;border-bottom: 1px solid #e9e9e9;}
+	.fc{font-size:30px;color:#f80;}
+	.input{height:80px;width:640px;margin:0 auto;position:fixed;bottom:0;background:#f5f5f7;}
+	.eer{margin:0;width:80%;display:inline-block;margin-left:10px;border:1px solid #ccc;border-radius:20px;margin-top:8px;background:#fff;}
+	.eer input{height:58px;width:90%;border:0;outline:none;padding:0;font-size:25px;margin-left:10px;margin-top:-2px;}
+	.eer img{vertical-align: middle;margin-left:8px;}
+	.img-box img{margin-top:14px;}
+	.img-box{width:15%;text-align:center;margin:0;position:absolute;right:2.5%;top:0;height:80px;}
 
-    .hide{
-        display:none;
-    }
-    .timedjs,#overdjs{top:90px!important;}
+	.scoY{overflow-y: scroll}
+
+	.aaaa{
+		margin-bottom: 90px;
+	}
+	video::-webkit-media-controls-enclosure {
+		display: none !important;
+	}
+	#controls{
+		width: 100%;
+		height: 36px;
+		padding-top: 3px;
+		line-height: 36px;
+	}
+	.controls{
+		width:55%;
+		/*display: block;*/
+		height: 10px;
+		background: #ccc;
+		margin: 10px auto;
+		position: relative;
+		left: 3%;
+		right: 5%;
+		float: left;
+	}
+	.controls b{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 0;
+		height: 100%;
+		background: blue;
+	}
+	.controls i {
+		width: 30px;
+		height: 30px;
+		border-radius: 50%;
+		background: #ddd;
+		position: absolute;
+		top: -10px;
+	}
+	#controls span{
+		text-align: center;
+		/*display: none;*/
+		font-size: 18px;
+		height: 100%;
+	}
+	#controls em{
+		width: 15%;
+		height: 100%;
+		line-height: 36px;
+		/*margin-right: 20px;*/
+	}
+
+	.hide{
+		display:none;
+	}
+	.timedjs,#overdjs{top:90px!important;}
+
+	/* 这些都是用来控制整体的屏幕格式的。保证自适应 */
+	/* 这个是video的控制 */
+	.video_style{
+		object-fit:fill;
+		width: 640px;
+		height:300px;
+	}
+	#hrdplay{
+		position:absolute;
+		height: 500px;
+	}
+	/* 广告栏 */
+	.mar{
+		width: 500px;
+		height: 80px;
+	}
+
+	/* 欢迎进入直播间 */
+	.user-prompt img{
+		width:60px;
+		height:60px;
+		border-radius: 30px;
+		float:left;
+	}
+	/* htc */
+	#hy1{
+		margin-left:15px;
+		color:red;
+		font-size:24px;
+		padding-right:30px;
+		padding-left:30px;
+		background-color:#e9e9e9;
+		border-radius:10px;
+		width:76%;
+		float:left;
+
+	}
+
+	/* 评论区 */
+	.testOver{
+		overflow: auto;
+		height: 50%;
+		width: 600px;
+		position: fixed;
+	}
+	.ppg{
+		margin-left:30px;
+		margin-top: 24px;
+		color:#2E2D3C;
+		font-size:24px;
+		padding-right:30px;
+		padding-left:30px;
+		border-radius:10px;
+		width:500px;
+		float:left;
+		position: relative;
+		min-height: 10px;
+		background: #e9e9e9;
+		word-break:break-word;
+		word-wrap: break-word;
+		padding: 5px;
+		line-height: 25px;
+	}
+	.ppg:after {
+		content: "";
+		display: block;
+		position: absolute;
+		width: 0;
+		height: 0;
+		border: 8px solid transparent;
+		border-right-color: #EEEEEE;
+		top: 10px;
+		left: -14px;
+	}
+
+	/* 页面布局自适应 */
+
 </style>
 <div style="width: 640px; margin: 0mm auto; position:relative;">
-    <p xmlns:th="http://www.thymeleaf.org" class="hide" id="username" th:text="${username}"></p><!--后台返回的用户名-->
-    <p xmlns:th="http://www.thymeleaf.org" class="hide" id="imgurl" th:text="${headimgurl}"></p><!--后台返回的头像-->
+	<p xmlns:th="http://www.thymeleaf.org" class="hide" id="username" th:text="潘雷"></p>
+	<!-- <p xmlns:th="http://www.thymeleaf.org" class="hide" id="username" th:text="${username}"</p>--><!--后台返回的用户名-->
+	<p xmlns:th="http://www.thymeleaf.org" class="hide" id="imgurl" th:text="${headimgurl}"></p><!--后台返回的头像-->
 
-    <div class="allpic" >
-        <img src="/images/732.jpg" />
-    </div>
-    <div class="box">
-        <div class="YaoYao hide">
-        </div>
-        <div class="r1 hide">
-            <!--  <a href="">
+	<div class="allpic" >
+		<img src="../static/images/20190315124205.jpg" />
+	</div>
+	<div class="box">
+		<div class="YaoYao hide">
+
+		</div>
+		<div class="r1 hide">
+			<!--  <a href="">
                   <img src="/images/logo22725.jpg" />
               </a>-->
-        </div>
-        <div style="overflow:hidden;">
-            <div class="r2" >
-                <div id="hrdplay" style="position:absolute;">     <!--潘雷-->
-                    <video id="my-player" class="video-js"
-                           width="640px"
-                           height="360px"
-                           style="object-fit:fill"
-                           webkit-playsinline="true"
-                           x-webkit-airplay="true"
-                           playsinline="true"
-                           x5-video-player-type="h5"
-                           x5-video-orientation="h5"
-                           x5-video-player-fullscreen="true"
-                           preload="auto"
-                           autoplay="autoplay"
-                           controls>
-                    </video>
-                </div>
-            </div>
-        </div>
-       <div id="Vcon">
-            <div id="danmu"  style="display:none;"></div>
-            <div id="fullscreen" onclick="testPlay()" style="width:60px;height:60px;z-index:199;top:300px;right:10px;position:absolute;color:#fff;font-size:20px;display:none;">全屏</div>
-            <div class="r5" style="display:none">
-                <!--<marquee>
+		</div>
+		<div style="overflow:hidden;">
+			<div class="r2">
+				<div id="hrdplay" >
+					<!-- 播放器背景图 --刘峻-->
+					<div id="back" style="width: 640px;height: 300px;">
+						<img style="width: 640px;height: 300px;" src="../static/images/20190315124137.jpg" />
+						<span id="time" style="color: white;position: absolute;top:5%;left: 50%;transform: translateX(-50%);"></span>
+					</div>
+					<!--潘雷-->
+
+					<div id="playercontainer"></div>
+
+				</div>
+
+			</div>
+		</div>
+		<div id="Vcon">
+			<div id="danmu"  style="display:none;"></div>
+			<div id="fullscreen" onclick="testPlay()" style="width:60px;height:60px;z-index:199;top:300px;right:10px;position:absolute;color:#fff;font-size:20px;display:none;">全屏</div>
+			<div class="r5" style="display:none">
+				<!--<marquee>
                滚动字幕
                 </marquee>-->
-            </div>
-            <div class="detail mar">
-                <img src="/images/companylogo.jpg" alt=""  style="white-space:normal;"/>
-            </div>
-                                       <div class="r4">
-                                <div class="tab">
-                                    <a href="javascript:;" class='act'>留言互动</a>
-                                    <a href="javascript:;" >直播详情</a>
-                                    <a href="javascript:;" >贴心官微</a>
-                                </div>
-                                <div class="page">
-                                    <!-- 直播互动 -->
-                                    <div class="item ">
-                                        <div class="fc-box hide">
-                                            <font class="fc" color="#f80">&nbsp;观看0人</font>
-                                        </div>
-                                        <div class="user-prompt">
-                                            <img xmlns:th="http://www.thymeleaf.org" th:src="${headimgurl}"   width="60" height="60" style="border-radius: 30px;float:left"/>
+			</div>
+			<div class="detail mar">
+				<img src="../static/images/20190315141855.jpg" alt=""  style="width: 640px;white-space:normal;"/>
+			</div>
+			<div class="r4">
+				<div class="tab">
+					<a href="javascript:;" class='act'>留言互动</a>
+					<a href="javascript:;" >直播详情</a>
+					<a href="javascript:;" >贴心官微</a>
+				</div>
+				<div class="page">
+					<!-- 直播互动 -->
+					<div class="item ">
+						<div class="fc-box hide">
+							<font class="fc" color="#f80">&nbsp;观看0人</font>
+						</div>
+						<div class="user-prompt">
+							<!-- HTC 头像 -->
+							<!-- <img xmlns:th="http://www.thymeleaf.org" th:src="${headimgurl}"/> -->
+							<img src="../static/images/header.jpg"/>
 
-                            <div style="margin-left:15px;color:red;font-size:24px;padding-right:30px;padding-left:30px;background-color:#e9e9e9;border-radius:10px;width:76%;float:left;" id="hy1">欢迎进入直播间</div>
-                        </div>
-                            <div class="aaaa" >
-                            <ul class="rrr" id="parentul">
-                                <li class="hide" >
+							<div id="hy1">欢迎潘雷进入直播间</div>
+						</div>
+						<div class="aaaa testOver" >
+							<ul class="rrr" id="parentul">
+								<li class="hide ppg" >
+									<div class="user">
+										<img width="60" height="60" src="../static/images/header.jpg"/>
+										<p>潘雷</p>2018-12-16<a href="javascript:void(0);" onclick="reply(this)" style="float:right;"><img  style="border-radius:0;" src="../static/images/header.jpg" /><span >123</span></a>
+									</div>
+									<p class="say"></p>
+								</li>
 
-                                    <div class="user">
+								<li class="" >
+									<div class="user">
+										<img width="60" height="60" src="../static/images/header.jpg"/>
+										<p>潘雷</p>2018-12-16
+										<a href="javascript:void(0);" onclick="reply(this)" style="float:left;">
+											<!-- <img  style="border-radius:0;" src="../static/images/header.jpg" /> -->
+											<span class="ppg">
+																						kdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																						sdkafhnksadhfnsahdnfiosadhnfokdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																						sdkafhnksadhfnsahdnfiosadhnfokdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																						kdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																						sdkafhnksadhfnsahdnfiosadhnfokdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																						sdkafhnksadhfnsahdnfiosadhnfo
+																					</span>
+										</a>
+									</div>
+									<p class="say"></p>
+								</li>
 
-                                        <img width="60" height="60" src=""/>
-                                        <p>Name</p>Time<a href="javascript:void(0);" onclick="reply(this)" style="float:right;"><img  style="border-radius:0;" src="images/pl.jpg" /><span style="display:none">123</span></a>
+								<li class="" >
+									<div class="user">
+										<img width="60" height="60" src="../static/images/header.jpg"/>
+										<p>潘雷</p>2018-12-16
+										<a href="javascript:void(0);" onclick="reply(this)" style="float:left;">
+											<!-- <img  style="border-radius:0;" src="../static/images/header.jpg" /> -->
+											<span class="ppg">
+																						kdbsuaafnhiasjdfoiasjdfoiasjdofisadf
+																					</span>
+										</a>
+									</div>
+									<p class="say"></p>
+								</li>
+							</ul>
+							<br /><br /><br />
 
-                                    </div>
-                                    <p class="say">yes</p>
-                                </li>
-
-                            </ul>
-
-                            <p id="msgmore" class="more" onclick="loadmore();">查看更多</p>
-                            <div id="blo"></div>
-                        </div>
-                        <script type="text/javascript">
+							<!-- <p id="msgmore" class="more" onclick="loadmore();">查看更多</p> -->
+							<div id="blo"></div>
+						</div>
+						<script type="text/javascript">
                             function reply(lou)
                             {
                                 var louceng=lou.parentNode.querySelector("p").innerHTML;
@@ -400,43 +520,43 @@
                                 document.querySelector(".eer input").focus();
 
                             }
-                        </script>
-                    </div>
-                    <!-- 活动详情 -->
-                    <div class="item hide">
-                        <div class="detail">
-                            <!--- 先显示广告吗？-->
-                            <img src="/images/head1.png" alt="" />
+						</script>
+					</div>
+					<!-- 活动详情 -->
+					<div class="item hide">
+						<div class="detail">
+							<!--- 先显示广告吗？-->
+							<img src="../static/images/20190315124137.jpg" style="width: 640px;" alt="" />
 
-                        </div>
-                    </div>
-                    <!-- 第三个 -->
-                    <div class="item hide">
-                        <div class="detail" style="margin:0 auto">
-                            <img src="/images/20180320171029.png" alt="" />
+						</div>
+					</div>
+					<!-- 第三个 -->
+					<div class="item hide">
+						<div class="detail" style="margin:0 auto">
+							<img style="width: 98%;height: 600px;" src="../static/images/20190315124153.jpg" alt=""0/>
 
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-
-
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
 
 
 
 
-    <div class="dspay hide"> --><!--以下全是调整格式的作用-->
 
-    </div>
-    <div class="orderpay hide">
 
-    </div>
-    <div class="dashang hide">
+	<div class="dspay hide"> --><!--以下全是调整格式的作用-->
 
-    </div>
-    <div class="pay_look" hidden style="
+	</div>
+	<div class="orderpay hide">
+
+	</div>
+	<div class="dashang hide">
+
+	</div>
+	<div class="pay_look" hidden style="
     position: fixed;
     top: 0;
     bottom: 0;
@@ -445,16 +565,16 @@
     background: rgba(0,0,0,.5);
 ">
 
-    </div>
-    <div class="input">
-        <p class="eer">
-            <input type="text" placeholder="录入你的评论" />
-        </p>
-        <div class="img-box">
-            <!--<img src="img/lala.png" class="love" />-->
-            <img src="/images/send.png" class="open" />
-        </div>
-    </div>
+	</div>
+	<div class="input">
+		<p class="eer">
+			<input type="text" placeholder="录入你的评论" />
+		</p>
+		<div class="img-box">
+			<!--<img src="img/lala.png" class="love" />-->
+			<img src="../static/images/send.png" class="open" />
+		</div>
+	</div>
 </div>
 
 
@@ -482,6 +602,52 @@
     pinit('http://gsh.shixiu.tv/hls/22725/ipir6vf/a/index.m3u8')
 </script>
 
+<script type="text/javascript">
+
+    /* 倒计时 --刘峻*/
+    var back = document.getElementById("back");
+    back=window.setInterval("show()", 1000);
+    function show(){
+        //获取目的日期
+        var time=Number(new Date("2019/3/15 21:10:00"));
+        //获取当前时间
+        var nowTime=Date.now();
+        //获取时间差
+        var timediff=Math.round((time-nowTime)/1000);
+        //获取还剩多少天
+        var day=parseInt(timediff/3600/24);
+        //获取还剩多少小时
+        var hour=parseInt(timediff/3600%24);
+        //获取还剩多少分钟
+        var minute=parseInt(timediff/60%60);
+        //获取还剩多少秒
+        var second=timediff%60;
+        //输出还剩多少时间
+        document.getElementById("time").innerText=day+"天"+hour+"时"+minute+"分"+second+"秒";
+
+        if(timediff<=0){
+            document.getElementById("back").style.display ="none";
+            window.clearInterval(back);
+        }
+    }
+</script>
+
+<script type="text/javascript">
+    var player = cyberplayer("playercontainer").setup({
+        width: 640,
+        height: 300,
+        isLive: true, // 必须设置，表明是直播视频
+        file: "http://gcqq450f71eywn6bv7u.exp.bcevod.com/mda-hbqagik5sfq1jsai/mda-hbqagik5sfq1jsai.mp4", // <—hls直播地址
+        autostart: true,
+        stretching: "uniform",
+        volume: 100,
+        controls: true,
+        hls: {
+            reconnecttime: 5 // hls直播重连间隔秒数
+        },
+        ak: "03a05677509949918cb20de9298a8607" // 公有云平台注册即可获得accessKey
+    });
+</script>
 
 <script type="text/javascript">
     //去除后台上传的图片距离白边
@@ -524,7 +690,9 @@
         var headimgurl = document.getElementById("imgurl").innerText;
         //alert("username="+username);
         //alert("headimgurl="+headimgurl);// 潘雷
-        document.getElementById("hy1").innerText = "欢迎"+username + "进入直播间";
+        // htc
+        document.getElementById("hy1").innerText = "欢迎潘雷进入直播间";
+        // document.getElementById("hy1").innerText = "欢迎"+username + "进入直播间";
         var wx = {
             OpenID: "ttttttt",
 
@@ -542,10 +710,9 @@
 
         var orderpay = document.querySelector(".orderpay");
         orderpay.style.height = innerHeight + "px";
-
         var allpic = document.querySelector(".allpic");
-
-        allpic.style.height = innerHeight + "px";
+            // htc
+            allpic.style.height = window.innerHeight + "px";
 
         var posting = false;
         /* tab切换 */
@@ -563,6 +730,7 @@
                 tab[x].classList.remove("hide");
                 mact = x;
                 if(x != 0){
+                    /* 他在这 */
                     document.querySelector(".input").style.display="none";
                 }else{
                     document.querySelector(".input").style.display="block";
@@ -803,27 +971,27 @@
         btnForm.onclick = function (evt) {
             alert('提交成功！');
             // 提交评论
-           // evt.preventDefault();
-           // if (!wx.OpenID) return alert("请使用微信进入后再发表评论。");
-           // if (posting) return alert("网络正忙，您可以尝试重新提交。");
-           // var ipt = document.querySelector(".eer input");
-           // var msg = ipt.value;
-           // if (!msg) return alert("请输入评论内容");
-           // if(msg.length>100) return alert("输入内容需在100字以内");
-           // var par = [
-           //     "act=Post",
+            // evt.preventDefault();
+            // if (!wx.OpenID) return alert("请使用微信进入后再发表评论。");
+            // if (posting) return alert("网络正忙，您可以尝试重新提交。");
+            // var ipt = document.querySelector(".eer input");
+            // var msg = ipt.value;
+            // if (!msg) return alert("请输入评论内容");
+            // if(msg.length>100) return alert("输入内容需在100字以内");
+            // var par = [
+            //     "act=Post",
             //    "OpenID=" + wx.OpenID,
             //    "Nick=" + encodeURIComponent(wx.Nick),
             //    "Icon=" + wx.Icon,
             //    "Msg=" + encodeURIComponent(msg)
             //].join("&");
             //Post(function (txt) {
-             //   ipt.value = "";
-             //   var arr = txt.split("\b");
-             //   if (arr.length < 2) return alert(arr[0]);
-                //tmpRow.newRow([~~arr[1], wx.Icon, wx.Nick, new Date().toLocaleTimeString(), "您已评论成功！", "0"], true);
-                //alert("您已评论成功！");
-             //   tmpRow.firstId = ~~arr[1];
+            //   ipt.value = "";
+            //   var arr = txt.split("\b");
+            //   if (arr.length < 2) return alert(arr[0]);
+            //tmpRow.newRow([~~arr[1], wx.Icon, wx.Nick, new Date().toLocaleTimeString(), "您已评论成功！", "0"], true);
+            //alert("您已评论成功！");
+            //   tmpRow.firstId = ~~arr[1];
             //}, par);
             //var img = document.querySelector(".open");
             //var box = document.querySelector(".img-box");
@@ -834,7 +1002,7 @@
         };
         // 更多评论
         tmpRow.more.onclick = function (evt) {
-           // if (!tmpRow.hasRow) return alert("没有更多评论了");
+            // if (!tmpRow.hasRow) return alert("没有更多评论了");
             //  loadChat(tmpRow.lastId);
         };
 
@@ -922,40 +1090,40 @@
 
 
     // Ajax提交数据
-  //  function Post(func, str) {
-  //      var xhr = new XMLHttpRequest;
-  //      xhr.open("POST", "Data/Ajax.aspx?pid=22725", true);
-  //      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-  //      xhr.onload = function () {
-  //          posting = false;
-  //          func(xhr.responseText);
-  //      };
-  //      xhr.onerror = function () { posting = false; };
-  //      xhr.send(str);
-  //  }
-      function PostData(url,func,str){
-          var xhr = new XMLHttpRequest;
-          xhr.open("GET",url,true);
-          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          xhr.onload = function () {
-              posting = false;
-              func(xhr.responseText);
-          };
-          xhr.onerror = function () { posting = false; };
-          xhr.send(str);
+    //  function Post(func, str) {
+    //      var xhr = new XMLHttpRequest;
+    //      xhr.open("POST", "Data/Ajax.aspx?pid=22725", true);
+    //      xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+    //      xhr.onload = function () {
+    //          posting = false;
+    //          func(xhr.responseText);
+    //      };
+    //      xhr.onerror = function () { posting = false; };
+    //      xhr.send(str);
+    //  }
+    function PostData(url,func,str){
+        var xhr = new XMLHttpRequest;
+        xhr.open("GET",url,true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            posting = false;
+            func(xhr.responseText);
+        };
+        xhr.onerror = function () { posting = false; };
+        xhr.send(str);
 
-      }
-      function Post(func, str) {
-          var xhr = new XMLHttpRequest;
-          xhr.open("POST", "/addComment", true);
-          xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
-          xhr.onload = function () {
-              posting = false;
-              func(xhr.responseText);
-          };
-          xhr.onerror = function () { posting = false; };
-          xhr.send(str);
-      }
+    }
+    function Post(func, str) {
+        var xhr = new XMLHttpRequest;
+        xhr.open("POST", "/addComment", true);
+        xhr.setRequestHeader("Content-Type", "application/x-www-form-urlencoded");
+        xhr.onload = function () {
+            posting = false;
+            func(xhr.responseText);
+        };
+        xhr.onerror = function () { posting = false; };
+        xhr.send(str);
+    }
 
 
 
@@ -1154,7 +1322,7 @@
     }
 
 
-      // 潘雷1021  document.getElementById("hy1").innerText = "欢迎"+dataMsg.nickName + "进入直播间";
+    // 潘雷1021  document.getElementById("hy1").innerText = "欢迎"+dataMsg.nickName + "进入直播间";
 
 
 
@@ -1224,6 +1392,7 @@
         }
     }
 </script>
+
 
 
 <script>
